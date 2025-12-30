@@ -33,7 +33,6 @@ Map<String, dynamic> _$ProfileEntityToJson(ProfileEntity instance) {
     'gender': instance.gender,
     'user_id': instance.userId,
   };
-
   // remove null property
   data.removeWhere((key, value) => value == null);
 

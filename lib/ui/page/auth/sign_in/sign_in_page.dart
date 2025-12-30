@@ -57,7 +57,6 @@ class _SignInPageChildState extends State<SignInPageChild> {
   Widget buildHeader() {
     return Center(child: Text("Welcome", style: AppTextStyle.greenDarkS30));
   }
-
   Widget buildFormBody() {
     return Form(
       key: _formKey,

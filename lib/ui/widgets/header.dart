@@ -3,30 +3,17 @@ import 'package:finance_management/common/app_icons.dart';
 import 'package:finance_management/common/app_text_style.dart';
 import 'package:finance_management/ui/page/home/widget/icon_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Header extends StatelessWidget {
   final double percent;
+
   const Header({super.key, this.percent = 0.7});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Hi, Welcome Back", style: AppTextStyle.greenDarkBoldS20),
-                Text("Good Morning", style: AppTextStyle.greenDarkLightS14),
-              ],
-            ),
-            IconButton(onPressed: () {}, icon: SvgPicture.asset(AppIcons.icNotification)),
-          ],
-        ),
-        SizedBox(height: 40),
+        SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

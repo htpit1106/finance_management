@@ -26,10 +26,10 @@ class TransactionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      spacing: 10,
+      spacing: 5,
       children: [
         AppIconButton(iconPath: iconPath, isActive: isActive, ),
-
+        SizedBox(width: 5),
         Expanded(
           flex: 3,
           child: Column(
@@ -59,7 +59,6 @@ class TransactionItem extends StatelessWidget {
           child: Text(
             type,
             style: AppTextStyle.greenDarkLightS13,
-            overflow: TextOverflow.ellipsis,
             maxLines: 1,
           ),
         ),

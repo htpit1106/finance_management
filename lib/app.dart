@@ -33,7 +33,7 @@ class _FinanceAppChildState extends State<FinanceAppChild> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: AppRouter.router,
-      title: AppConfigs.appName,
+      title: AppConstants.appName,
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
       locale: const Locale('en'),

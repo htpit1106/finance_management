@@ -9,20 +9,22 @@ class AppIconButton extends StatelessWidget {
   final Color? bgPressedColor;
   final double? size;
   final bool isActive;
-
+  final VoidCallback? onTap;
   const AppIconButton({
     super.key,
     required this.iconPath,
-    this.iconColor = Colors.white,
+    this.iconColor = AppColors.whiteIcon,
     this.bgDefaultColor = AppColors.lightBlue,
     this.size = 54,
     this.bgPressedColor = AppColors.vividBlue,
     this.isActive = false,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
 
       child: AnimatedContainer(
         duration: Duration(milliseconds: 100),

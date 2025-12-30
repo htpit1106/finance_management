@@ -28,56 +28,39 @@ class _HomePageChildState extends State<HomePageChild> {
   @override
   Widget build(BuildContext context) {
     return BackgroundApp(
+
       heightHeader: 350,
-      header: Header(),
+      header: _buildHeader(),
       body: SingleChildScrollView(
-        child: Column(spacing: 20, children: [_buildSavingCard(), _buildListTimeFilter()]),
+        child: Column(
+          spacing: 20,
+          children: [_buildSavingCard(), _buildListTimeFilter(), const SizedBox(height: 100)],
+        ),
       ),
     );
   }
 
-  Widget _buildListTimeFilter() {
+  Widget _buildHeader() {
     return Column(
       children: [
-        Container(
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: AppColors.navBottonBg,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(flex: 1, child: FilterButton(text: "Daily", isActive: true)),
-              Expanded(flex: 1, child: FilterButton(text: "Weekly", isActive: false)),
-              Expanded(flex: 1, child: FilterButton(text: "Monthly", isActive: false)),
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Hi, Welcome Back", style: AppTextStyle.greenDarkBoldS20),
+                Text("Good Morning", style: AppTextStyle.greenDarkLightS14),
+              ],
+            ),
+            IconButton(onPressed: () {}, icon: SvgPicture.asset(AppIcons.icNotification)),
+
+          ],
         ),
-        SizedBox(height: 20,),
-        _buildListTransaction(),
+        Header()
       ],
     );
   }
-
-  Widget _buildListTransaction() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [_buildTransaction(), SizedBox(height: 20), _buildTransaction()],
-    );
-  }
-
-  Widget _buildTransaction() {
-    return TransactionItem(
-      iconPath: AppIcons.icSalary,
-      title: "Salary",
-      subTitle: "18:27 - April 30",
-      type: "Monthly",
-      amount: "\$20,000.00",
-      isActive: false,
-    );
-  }
-
   Widget _buildSavingCard() {
     return Container(
       padding: const EdgeInsets.all(10),
@@ -181,4 +164,53 @@ class _HomePageChildState extends State<HomePageChild> {
       ),
     );
   }
+  Widget _buildListTimeFilter() {
+    return Column(
+      children: [
+        Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: AppColors.navBottonBg,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(flex: 1, child: FilterButton(text: "Daily", isActive: true)),
+              Expanded(flex: 1, child: FilterButton(text: "Weekly", isActive: false)),
+              Expanded(flex: 1, child: FilterButton(text: "Monthly", isActive: false)),
+            ],
+          ),
+        ),
+        SizedBox(height: 20),
+        _buildListTransaction(),
+      ],
+    );
+  }
+
+  Widget _buildListTransaction() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        _buildTransaction(),
+        SizedBox(height: 20),
+        _buildTransaction(),
+        SizedBox(height: 20),
+        _buildTransaction(),
+      ],
+    );
+  }
+
+  Widget _buildTransaction() {
+    return TransactionItem(
+      iconPath: AppIcons.icSalary,
+      title: "Salary",
+      subTitle: "18:27 - April 30",
+      type: "Monthly",
+      amount: "\$20,000.00",
+      isActive: false,
+    );
+  }
+
+
 }

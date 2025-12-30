@@ -26,6 +26,16 @@ class AppColors {
   static const Color greenBtn = Color(0xFF00D09E);
   static const Color lightGreenBtn = Color(0xFFDFF7E2);
 
+  // black icon
+  static const Color blackIcon = Colors.black;
+  static const Color whiteIcon = Colors.white;
+
+  // border
+  static const Color greenBorder = Color(0xFF00D09E);
+
+
+
+
   // tranfe
   static const Color transparent = Colors.transparent;
 

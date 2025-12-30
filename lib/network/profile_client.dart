@@ -1,3 +1,4 @@
+import 'package:finance_management/configs/app_config.dart';
 import 'package:finance_management/model/profile_entitty/profile_entity.dart';
 import 'package:finance_management/network/supabase_util.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class ProfileClient {
   Future<void> updateProfile({required ProfileEntity profile}) async {
     try {
       if (profile.id == null) return;
-      await supabaseClient.from("profile").update(profile.toJson()).eq("id", profile.id!);
+      await supabaseClient.from(AppConstants.tableNameProfile).update(profile.toJson()).eq("id", profile.id!);
     } catch (e) {
       debugPrint(e.toString());
     }
