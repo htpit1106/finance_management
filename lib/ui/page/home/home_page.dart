@@ -2,6 +2,7 @@ import 'package:finance_management/common/app_colors.dart';
 import 'package:finance_management/common/app_icons.dart';
 import 'package:finance_management/common/app_text_style.dart';
 import 'package:finance_management/ui/page/home/widget/filter_button.dart';
+import 'package:finance_management/ui/page/home/widget/list_time_filter.dart';
 import 'package:finance_management/ui/page/home/widget/transaction_item.dart';
 import 'package:finance_management/ui/widgets/background_app.dart';
 import 'package:finance_management/ui/widgets/header.dart';
@@ -25,10 +26,10 @@ class HomePageChild extends StatefulWidget {
 }
 
 class _HomePageChildState extends State<HomePageChild> {
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return BackgroundApp(
-
       heightHeader: 350,
       header: _buildHeader(),
       body: SingleChildScrollView(
@@ -54,13 +55,13 @@ class _HomePageChildState extends State<HomePageChild> {
               ],
             ),
             IconButton(onPressed: () {}, icon: SvgPicture.asset(AppIcons.icNotification)),
-
           ],
         ),
-        Header()
+        Header(),
       ],
     );
   }
+
   Widget _buildSavingCard() {
     return Container(
       padding: const EdgeInsets.all(10),
@@ -164,24 +165,21 @@ class _HomePageChildState extends State<HomePageChild> {
       ),
     );
   }
+
   Widget _buildListTimeFilter() {
+
     return Column(
       children: [
-        Container(
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: AppColors.navBottonBg,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(flex: 1, child: FilterButton(text: "Daily", isActive: true)),
-              Expanded(flex: 1, child: FilterButton(text: "Weekly", isActive: false)),
-              Expanded(flex: 1, child: FilterButton(text: "Monthly", isActive: false)),
-            ],
-          ),
+        ListTimeFilter(
+          listTime: ['Daily', 'Weekly', 'Monthly'],
+          selectedIndex: selectedIndex,
+          onTap: (index) {
+            setState(() {
+              selectedIndex = index;
+            });
+          },
         ),
+
         SizedBox(height: 20),
         _buildListTransaction(),
       ],
@@ -211,6 +209,4 @@ class _HomePageChildState extends State<HomePageChild> {
       isActive: false,
     );
   }
-
-
 }
