@@ -1,7 +1,7 @@
 import 'package:finance_management/network/auth_client.dart';
 
 abstract class AuthRepository {
-  final authClient = AuthClient();
+
   String? get userId;
   Future <bool> signIn(String email, String password);
   Future <bool> signUp(String email, String password);
@@ -9,6 +9,7 @@ abstract class AuthRepository {
 }
 
 class AuthRepositoryImpl extends AuthRepository{
+  final authClient = AuthClient();
   // get userId;
   @override
   String? get userId => authClient.userId;

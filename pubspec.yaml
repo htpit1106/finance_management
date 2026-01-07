@@ -47,7 +47,8 @@ dependencies:
   bloc:
   flutter_svg:
   pinput: ^6.0.1
-
+  table_calendar:
+  fl_chart:
 dev_dependencies:
   flutter_test:
     sdk: flutter

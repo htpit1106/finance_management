@@ -1,3 +1,4 @@
+import 'package:finance_management/common/app_colors.dart';
 import 'package:finance_management/common/app_text_style.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class AppTextButton extends StatelessWidget {
     super.key,
     this.textButton,
     this.onTap,
-    this.backgroundColor,
+    this.backgroundColor = AppColors.greenBtn,
 
     this.minWidth = 0,
     this.minHeight = 0,

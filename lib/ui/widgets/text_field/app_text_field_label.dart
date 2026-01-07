@@ -33,6 +33,7 @@ class AppTextFieldLabel extends StatelessWidget {
         Text(labelText, style: AppTextStyle.greenDarkS15),
         const SizedBox(height: 10),
         TextFormField(
+
           keyboardType: keyboardType,
           controller: controller,
           obscureText: obscureText,

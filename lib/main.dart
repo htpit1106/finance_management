@@ -9,7 +9,7 @@ final supabase = Supabase.instance.client;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('en_US', null);
-  await SupabaseUtil.init(AppConstants.url, AppConstants.anonKey);
+  await SupabaseUtil.init(AppConstants.urlSupabase, AppConstants.anonKeySupabase);
   runApp(FinanceApp());
 }
 
