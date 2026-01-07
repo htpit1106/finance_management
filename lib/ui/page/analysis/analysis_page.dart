@@ -34,7 +34,7 @@ class _AnalysisPageChildState extends State<AnalysisPageChild> {
   Widget build(BuildContext context) {
     return BackgroundApp(
       heightHeader: 350,
-      header: _buildHeader(),
+      header: _buildHeaderPage(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +50,7 @@ class _AnalysisPageChildState extends State<AnalysisPageChild> {
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeaderPage() {
     return Column(
       children: [
         Row(
