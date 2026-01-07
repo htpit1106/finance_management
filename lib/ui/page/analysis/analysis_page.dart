@@ -121,7 +121,6 @@ class _AnalysisPageChildState extends State<AnalysisPageChild> {
             InkWell(
               borderRadius: BorderRadius.circular(12),
               onTap: () {
-                // Todo: refactor to cubit
                 context.push(AppRouter.searchPage);
               },
               child: Padding(padding: EdgeInsets.zero, child: Image.asset(AppIcons.icSearch)),
@@ -131,7 +130,6 @@ class _AnalysisPageChildState extends State<AnalysisPageChild> {
             InkWell(
               borderRadius: BorderRadius.circular(12),
               onTap: () {
-                // Todo: refactor to cubit
                 context.push(AppRouter.calenderPage);
               },
               child: Padding(padding: EdgeInsets.zero, child: Image.asset(AppIcons.icCalendar)),
