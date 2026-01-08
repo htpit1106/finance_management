@@ -83,7 +83,7 @@ class _SignInPageChildState extends State<SignInPageChild> {
           AppTextButton(
             minHeight: 45,
             minWidth: 200,
-            textButton: "Log In",
+            text: "Log In",
             backgroundColor: AppColors.greenBtn,
             onTap: () {
               if (_formKey.currentState!.validate()) {

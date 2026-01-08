@@ -11,6 +11,9 @@ class AppTextFieldLabel extends StatelessWidget {
   final TextEditingController? controller;
   final Widget? suffixIcon;
   final TextInputType keyboardType;
+  final int maxLines;
+  final TextStyle? hintTextStyle;
+
 
   const AppTextFieldLabel({
     super.key,
@@ -22,6 +25,8 @@ class AppTextFieldLabel extends StatelessWidget {
     this.suffixIcon,
     this.keyboardType = TextInputType.text,
     this.onSuffixIconTap,
+    this.maxLines = 1,
+    this.hintTextStyle
   });
 
   @override
@@ -38,11 +43,12 @@ class AppTextFieldLabel extends StatelessWidget {
           controller: controller,
           obscureText: obscureText,
           validator: validator,
+          maxLines: maxLines,
           decoration: InputDecoration(
             hintText: hintText,
             suffixIcon: suffixIcon,
             suffixIconConstraints: const BoxConstraints(minWidth: 15, minHeight: 15),
-            hintStyle: AppTextStyle.hintText,
+            hintStyle: hintTextStyle ?? AppTextStyle.hintText,
             errorStyle: const TextStyle(
               color: Colors.red,
               fontSize: 12,

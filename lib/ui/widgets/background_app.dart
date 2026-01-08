@@ -46,7 +46,7 @@ class BackgroundApp extends StatelessWidget {
                   topRight: Radius.circular(50),
                 ),
               ),
-              child: SingleChildScrollView(child: body ?? const SizedBox()),
+              child: body ?? const SizedBox(),
             ),
           ),
         ],

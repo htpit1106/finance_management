@@ -68,7 +68,7 @@ class _NewPasswordPageChildState extends State<NewPasswordPageChild> {
             const SizedBox(height: 120),
 
             AppTextButton(
-              textButton: "Change Password",
+              text: "Change Password",
               onTap: () {},
               backgroundColor: AppColors.greenBtn,
               minWidth: double.infinity,

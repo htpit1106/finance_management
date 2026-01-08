@@ -80,7 +80,7 @@ class _SplashPageChildState extends State<SplashPageChild> {
             minWidth: 200,
             minHeight: 45,
 
-            textButton: "Log In",
+            text: "Log In",
             backgroundColor: AppColors.greenBtn,
             onTap: () {
               cubit.onPressLogIn();
@@ -91,7 +91,7 @@ class _SplashPageChildState extends State<SplashPageChild> {
           AppTextButton(
             minWidth: 200,
             minHeight: 45,
-            textButton: "Sign Up",
+            text: "Sign Up",
             backgroundColor: AppColors.lightGreenBtn,
             onTap: () {
               cubit.onPressSignUp();

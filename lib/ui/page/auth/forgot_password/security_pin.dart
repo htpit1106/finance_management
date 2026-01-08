@@ -63,7 +63,7 @@ class _SecurityPinPageChildState extends State<SecurityPinPageChild> {
 
           AppTextButton(
             minWidth: 170,
-            textButton: "Accept",
+            text: "Accept",
             onTap: () {
               context.push(AppRouter.newPassword);
             },
@@ -73,7 +73,7 @@ class _SecurityPinPageChildState extends State<SecurityPinPageChild> {
 
           AppTextButton(
             minWidth: 170,
-            textButton: "Send Again",
+            text: "Send Again",
             onTap: () {},
             backgroundColor: AppColors.lightGreenBtn,
           ),

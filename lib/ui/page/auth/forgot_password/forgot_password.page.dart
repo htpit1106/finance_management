@@ -58,7 +58,7 @@ class _ForgotPasswordPageChildState extends State<ForgotPasswordPageChild> {
             child: AppTextButton(
               minWidth: 170,
               minHeight: 32,
-              textButton: "Next Step",
+              text: "Next Step",
               onTap: () {
                 context.push(AppRouter.securityPin);
 

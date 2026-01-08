@@ -53,8 +53,16 @@ class AppIcons {
 
   static const icArrowDropDown = "assets/icons/arrow_drop_down.svg";
 
+  // categories
 
-
+  static const icTransport = "assets/icons/transport.svg";
+  static const icMedicine = "assets/icons/medicine.svg";
+  static const icGroceries = "assets/icons/groceries.svg";
+  static const icRent = "assets/icons/rent.svg";
+  static const icGifts = "assets/icons/gifts.svg";
+  static const icSavings = "assets/icons/savings.svg";
+  static const icEntertainment = "assets/icons/entertainment.svg";
+  static const icMore = "assets/icons/more.svg";
 
 
 

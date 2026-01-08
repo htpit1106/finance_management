@@ -20,7 +20,7 @@ class IncomeExpenseChart extends StatelessWidget {
       ChartItem('Tue', 1000, 1000),
       ChartItem('Wed', 2800, 9000),
       ChartItem('Thu', 4500, 7000),
-      ChartItem('Fri', 8000, 15000),
+      ChartItem('Fri', 8000, 6),
       ChartItem('Sat', 900, 2000),
       ChartItem('Sun', 5500, 1000),
     ];

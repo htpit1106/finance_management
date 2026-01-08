@@ -3,7 +3,7 @@ import 'package:finance_management/common/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class AppTextButton extends StatelessWidget {
-  final String? textButton;
+  final String? text;
   final VoidCallback? onTap;
   final Color? backgroundColor;
   final double minWidth;
@@ -11,7 +11,7 @@ class AppTextButton extends StatelessWidget {
 
   const AppTextButton({
     super.key,
-    this.textButton,
+    this.text,
     this.onTap,
     this.backgroundColor = AppColors.greenBtn,
 
@@ -27,7 +27,7 @@ class AppTextButton extends StatelessWidget {
         backgroundColor: backgroundColor,
         minimumSize: Size(minWidth, minHeight),
       ),
-      child: Text(textButton ?? "Button", style: AppTextStyle.greenDarkSemiBoldS20),
+      child: Text(text ?? "Button", style: AppTextStyle.greenDarkSemiBoldS20),
     );
   }
 }

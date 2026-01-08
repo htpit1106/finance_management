@@ -125,7 +125,7 @@ class _SignUpPageChildState extends State<SignUpPageChild> {
                 return state.isLoading ? CircularProgressIndicator() : AppTextButton(
                   minHeight: 45,
                   minWidth: 200,
-                  textButton: "Sign Up",
+                  text: "Sign Up",
                   backgroundColor: AppColors.greenBtn,
                   onTap: () {
                     if (_formKey.currentState!.validate()) {

@@ -131,7 +131,7 @@ class _SearchPageChildState extends State<SearchPageChild> {
           ),
 
           Center(
-            child: AppTextButton(textButton: "Search", minWidth: 169, minHeight: 44, onTap: () {}),
+            child: AppTextButton(text: "Search", minWidth: 169, minHeight: 44, onTap: () {}),
           ),
 
           ListView(

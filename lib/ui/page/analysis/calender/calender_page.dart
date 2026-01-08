@@ -77,7 +77,7 @@ class _CalendarPageChildState extends State<CalendarPageChild> {
               children: [
                 Expanded(
                   child: AppTextButton(
-                    textButton: "Spend",
+                    text: "Spend",
                     minHeight: 44,
                     backgroundColor: AppColors.lightGreenBtn,
                     onTap: () {},
@@ -85,7 +85,7 @@ class _CalendarPageChildState extends State<CalendarPageChild> {
                 ),
                 SizedBox(width: 12),
                 Expanded(
-                  child: AppTextButton(textButton: "Categories", minHeight: 44, onTap: () {}),
+                  child: AppTextButton(text: "Categories", minHeight: 44, onTap: () {}),
                 ),
               ],
             ),
@@ -102,7 +102,7 @@ class _CalendarPageChildState extends State<CalendarPageChild> {
         AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          // hien thi arrow back
+
           automaticallyImplyLeading: false,
           leading: IconButton(
             onPressed: () {
@@ -110,10 +110,10 @@ class _CalendarPageChildState extends State<CalendarPageChild> {
               navigator.goBack();
             },
             icon: SvgPicture.asset(
-              AppIcons.icBack, // icon custom của bạn
+              AppIcons.icBack,
             ),
           ),
-          // icon  notification - right // trail
+
           actions: [
             IconButton(
               onPressed: () {},
