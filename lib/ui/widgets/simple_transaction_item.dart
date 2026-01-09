@@ -1,5 +1,6 @@
 import 'package:finance_management/common/app_icons.dart';
 import 'package:finance_management/common/app_text_style.dart';
+import 'package:finance_management/utils/app_number_utils.dart';
 import 'package:flutter/material.dart';
 import 'button/app_icon_button.dart';
 
@@ -28,10 +29,10 @@ class SimpleTransactionItem extends StatelessWidget {
       margin: EdgeInsets.all(0),
       child: ListTile(
 
-        leading: AppIconButton(iconPath: iconPath),
+        leading: AppIconButton(iconPath: iconPath, iconSize: 30,),
         title: Text(title, style: AppTextStyle.greenDarkS15,),
         subtitle: Text(subTitle, style: AppTextStyle.oceanBlueS12,),
-        trailing: Text(amount, style: AppTextStyle.greenDarkS15,),
+        trailing: Text("\$${AppNumberUtils.formatDoubleTwo(amount)}", style: AppTextStyle.greenDarkS15,),
 
       ),
     );

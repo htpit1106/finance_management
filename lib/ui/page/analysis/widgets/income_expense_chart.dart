@@ -9,7 +9,6 @@ class ChartItem {
 
   ChartItem(this.day, this.income, this.expense);
 }
-
 class IncomeExpenseChart extends StatelessWidget {
   const IncomeExpenseChart({super.key});
 

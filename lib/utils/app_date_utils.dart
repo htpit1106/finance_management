@@ -13,25 +13,14 @@ class AppDateUtils {
     return DateFormat('MM/dd/yyyy').format(time);
   }
 
+  static String formatTimeTransactionsItem(DateTime time) {
+    return DateFormat('HH:mm - MMMM dd').format(time) ;
+  }
   static DateTime toDateTime(String date) {
     return DateTime.parse(date);
   }
 
 
-  static TimeOfDay toTimeOfDay(DateTime date) {
-    return TimeOfDay.fromDateTime(date);
-  }
-
-  static String formatTimeOfDayToString(TimeOfDay time) {
-    final dateTime = DateTime(1970, 1, 1, time.hour, time.minute);
-    return DateFormat.jm().format(dateTime);
-  }
-
-  // format dateTime: 4:00 pm
-  static String stringToOclock(String time) {
-    DateTime date = DateTime.parse(time);
-    return DateFormat('hh:mm a').format(date);
-  }
 
 
   static Future<DateTime> pickerDateShow(BuildContext context,

@@ -7,6 +7,7 @@ import 'package:finance_management/ui/widgets/background_app.dart';
 import 'package:finance_management/ui/widgets/button/app_text_button.dart';
 import 'package:finance_management/ui/widgets/header.dart';
 import 'package:finance_management/ui/widgets/simple_transaction_item.dart';
+import 'package:finance_management/utils/app_date_utils.dart';
 import 'package:finance_management/utils/categories_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -100,7 +101,6 @@ class _CategoryTransactionPageChildState extends State<CategoryTransactionPageCh
         Expanded(
           child: BlocBuilder<CategoryTransactionCubit, CategoryTransactionState>(
             builder: (context, state) {
-
               if (state.isLoadingTransaction) {
                 return const Center(child: CircularProgressIndicator());
               }
@@ -115,15 +115,18 @@ class _CategoryTransactionPageChildState extends State<CategoryTransactionPageCh
                   final transaction = state.transactions[index];
                   return SimpleTransactionItem(
                     title: transaction.title ?? "unKnow",
-                    subTitle: transaction.date.toString(),
+                    subTitle: transaction.date != null
+                        ? AppDateUtils.formatTimeTransactionsItem(
+                            AppDateUtils.toDateTime(transaction.date!),
+                          )
+                        : AppDateUtils.formatDateNow(DateTime.now()),
                     amount: transaction.amount.toString(),
                     iconPath: CategoriesUtils.getIcon(widget.category.name ?? "unKnow"),
                   );
-
-                });
-
+                },
+              );
             },
-          )
+          ),
         ),
 
         AppTextButton(

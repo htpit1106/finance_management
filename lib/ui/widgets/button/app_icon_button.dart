@@ -10,6 +10,7 @@ class AppIconButton extends StatelessWidget {
   final double? size;
   final bool isActive;
   final VoidCallback? onTap;
+  final double? iconSize;
   const AppIconButton({
     super.key,
     required this.iconPath,
@@ -19,6 +20,7 @@ class AppIconButton extends StatelessWidget {
     this.bgPressedColor = AppColors.vividBlue,
     this.isActive = false,
     this.onTap,
+    this.iconSize ,
   });
 
   @override
@@ -34,7 +36,7 @@ class AppIconButton extends StatelessWidget {
           color: isActive ? bgPressedColor : bgDefaultColor,
           borderRadius: BorderRadius.circular(24),
         ),
-        child: Center(child: SvgPicture.asset(iconPath, color: iconColor,)),
+        child: Center(child: SvgPicture.asset(iconPath, color: iconColor, width: iconSize, height: iconSize, )),
       ),
     );
   }

@@ -13,6 +13,7 @@ class FinanceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<AuthRepository>(create: (_) => AuthRepositoryImpl()),
