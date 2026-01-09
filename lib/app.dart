@@ -1,5 +1,7 @@
 import 'package:finance_management/repository/auth_repository.dart';
+import 'package:finance_management/repository/category_repository.dart';
 import 'package:finance_management/repository/profile_repository.dart';
+import 'package:finance_management/repository/transaction_repository.dart';
 import 'package:finance_management/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +17,8 @@ class FinanceApp extends StatelessWidget {
       providers: [
         RepositoryProvider<AuthRepository>(create: (_) => AuthRepositoryImpl()),
         RepositoryProvider<ProfileRepository>(create: (_) => ProfileRepositoryImpl()),
+        RepositoryProvider<CategoryRepository>(create: (_) => CategoryRepositoryImpl()),
+        RepositoryProvider<TransactionRepository>(create: (_) => TransactionRepositoryImpl()),
       ],
       child: FinanceAppChild(),
     );

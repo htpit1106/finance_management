@@ -1,3 +1,4 @@
+import 'package:finance_management/model/categories/category_entity.dart';
 import 'package:finance_management/ui/page/analysis/analysis_page.dart';
 import 'package:finance_management/ui/page/auth/forgot_password/forgot_password.page.dart';
 import 'package:finance_management/ui/page/auth/forgot_password/new_password.dart';
@@ -62,14 +63,18 @@ class AppRouter {
         path: categoryTransaction,
         name: categoryTransaction,
         builder: (context, state) {
-          final category = state.extra as String;
+          final category = state.extra as CategoryEntity;
           return CategoryTransactionPage(category: category);
         },
       ),
       GoRoute(
         path: addExpenses,
         name: addExpenses,
-        builder: (context, state) => const AddExpensesPage(),
+        builder: (context, state) {
+          final category = state.extra as CategoryEntity;
+
+          return  AddExpensesPage(category: category,);
+        }
       ),
 
       ShellRoute(
