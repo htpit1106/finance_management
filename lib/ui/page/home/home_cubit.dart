@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:finance_management/global/finance/finance_cubit.dart';
 import 'package:finance_management/model/enum/time_filter.dart';
 import 'package:finance_management/model/enum/type_transaction.dart';
 import 'package:finance_management/repository/summary_repository.dart';
@@ -8,23 +9,17 @@ import 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final SummaryRepository repository;
+  final FinanceCubit financeCubit;
 
-  HomeCubit({required this.repository}) : super(HomeState());
+
+  HomeCubit({required this.repository , required this.financeCubit}) : super(HomeState());
 
   Future<void> fetchInitialData() async {
-    fetchIncomeData();
+     financeCubit.fetchIncomeData();
     filterDataByTimeFilter();
   }
 
-  Future<void> fetchIncomeData() async {
-    final data = await repository.getTotalIncomeExpense();
-    emit(
-      state.copyWith(
-        totalBalance: (data["income"] ?? 0 ) - (data["expense"] ?? 0),
-        totalExpense: data["expense"] ?? 0,
-      ),
-    );
-  }
+
 
   Future<void> filterDataByTimeFilter({TypeTransaction type = TypeTransaction.expense}) async {
     try {

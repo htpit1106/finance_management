@@ -1,6 +1,8 @@
 import 'package:finance_management/common/app_colors.dart';
 import 'package:finance_management/common/app_icons.dart';
 import 'package:finance_management/common/app_text_style.dart';
+import 'package:finance_management/global/finance/finance_cubit.dart';
+import 'package:finance_management/global/finance/finance_state.dart';
 import 'package:finance_management/model/enum/time_filter.dart';
 import 'package:finance_management/repository/summary_repository.dart';
 import 'package:finance_management/ui/page/home/home_cubit.dart';
@@ -22,7 +24,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<HomeCubit>(
       create: (context) {
-        return HomeCubit(repository: SummaryRepositoryImpl());
+        return HomeCubit(repository: context.read<SummaryRepository>(),
+          financeCubit: context.read<FinanceCubit>());
       },
       child: HomePageChild(),
     );
@@ -81,7 +84,7 @@ class _HomePageChildState extends State<HomePageChild> {
             IconButton(onPressed: () {}, icon: SvgPicture.asset(AppIcons.icNotification)),
           ],
         ),
-        BlocBuilder<HomeCubit, HomeState>(
+        BlocBuilder<FinanceCubit, FinanceState>(
           buildWhen: (previous, current) =>
               previous.totalBalance != current.totalBalance ||
               previous.totalExpense != current.totalExpense,

@@ -1,6 +1,8 @@
 import 'package:finance_management/common/app_colors.dart';
 import 'package:finance_management/common/app_icons.dart';
 import 'package:finance_management/common/app_text_style.dart';
+import 'package:finance_management/global/finance/finance_cubit.dart';
+import 'package:finance_management/global/finance/finance_state.dart';
 import 'package:finance_management/router/app_router.dart';
 import 'package:finance_management/ui/page/analysis/widgets/income_expense_chart.dart';
 import 'package:finance_management/ui/page/home/widget/list_time_filter.dart';
@@ -8,6 +10,7 @@ import 'package:finance_management/ui/widgets/background_app.dart';
 import 'package:finance_management/ui/widgets/button/target_button.dart';
 import 'package:finance_management/ui/widgets/header.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
@@ -66,7 +69,18 @@ class _AnalysisPageChildState extends State<AnalysisPageChild> {
             ),
           ],
         ),
-        AppHeader(),
+        BlocBuilder<FinanceCubit, FinanceState>(
+          buildWhen: (previous, current) =>
+          previous.totalBalance != current.totalBalance ||
+              previous.totalExpense != current.totalExpense,
+          builder: (context, state) {
+            return AppHeader(
+              balanceAmount: state.totalBalance,
+              expenseAmount: state.totalExpense,
+            );
+          },
+        ),
+
       ],
     );
   }

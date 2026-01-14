@@ -13,7 +13,7 @@ class AppHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final percent = 1 - safePercent(expenseAmount, balanceAmount) - 0.1;
+    final percent = safePercent(expenseAmount, balanceAmount);
     return Column(
       children: [
         SizedBox(height: 20),
@@ -30,10 +30,14 @@ class AppHeader extends StatelessWidget {
             Text(
               "\$ ${AppNumberUtils.formatDoubleTwo(balanceAmount.toString())}",
               style: AppTextStyle.whiteS20,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
             Text(
               "-\$ ${AppNumberUtils.formatDoubleTwo(expenseAmount.toString())}",
               style: AppTextStyle.oceanBlueS20Bold,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),
@@ -52,13 +56,13 @@ class AppHeader extends StatelessWidget {
       ],
     );
   }
+
   double safePercent(double value, double total) {
     if (total <= 0) return 0;
     final p = value / total;
     if (p.isNaN || p.isInfinite) return 0;
     return p.clamp(0.0, 1.0);
   }
-
 
   Widget _buildProcessBar(double percent) {
     return Padding(
@@ -67,28 +71,41 @@ class AppHeader extends StatelessWidget {
         children: [
           Container(
             height: 28,
-            decoration: BoxDecoration(
-              color: AppColors.blackText,
-              borderRadius: BorderRadius.circular(50),
-            ),
-            alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.only(left: 16),
-            child: Text("${(100 - percent * 100).toInt()}%", style: AppTextStyle.whiteS12Light),
-          ),
-
-          Align(
+            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(50)),
             alignment: Alignment.centerRight,
+            padding: const EdgeInsets.only(right: 16),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
             child: FractionallySizedBox(
               widthFactor: percent,
               child: Container(
                 height: 28,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.blackText,
                   borderRadius: BorderRadius.circular(50),
                 ),
-                alignment: Alignment.centerRight,
-                padding: const EdgeInsets.only(right: 16),
-                child: Text("\$20,000.00", style: AppTextStyle.greenDarkMediumS14),
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.only(left: 8),
+                child: Text(
+                  "${(percent * 100).toInt()}%",
+                  style: AppTextStyle.whiteS12Light,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+
+            child: Padding(
+              padding: const EdgeInsets.only(right: 8.0, top: 4),
+              child: Text(
+                "\$20,000.00",
+                style: percent > 0.8
+                    ? AppTextStyle.whiteS14Medium
+                    : AppTextStyle.greenDarkMediumS14,
               ),
             ),
           ),

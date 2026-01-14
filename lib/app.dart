@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'common/app_themes.dart';
 import 'configs/app_config.dart';
+import 'global/finance/finance_cubit.dart';
 
 class FinanceApp extends StatelessWidget {
   const FinanceApp({super.key});
@@ -20,11 +21,16 @@ class FinanceApp extends StatelessWidget {
         RepositoryProvider<ProfileRepository>(create: (_) => ProfileRepositoryImpl()),
         RepositoryProvider<CategoryRepository>(create: (_) => CategoryRepositoryImpl()),
         RepositoryProvider<TransactionRepository>(create: (_) => TransactionRepositoryImpl()),
-        RepositoryProvider<SummaryRepository>(
-          create: (_) => SummaryRepositoryImpl(),
-        ),
+        RepositoryProvider<SummaryRepository>(create: (_) => SummaryRepositoryImpl()),
       ],
-      child: FinanceAppChild(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<FinanceCubit>(
+            create: (context) => FinanceCubit(repository: context.read<SummaryRepository>()),
+          ),
+        ],
+        child: FinanceAppChild(),
+      ),
     );
   }
 }
