@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:finance_management/model/categories/category_entity.dart';
+import 'package:finance_management/model/enum/type_transaction.dart';
 import 'package:finance_management/model/transactions/transaction_entity.dart';
 import 'package:finance_management/network/supabase_util.dart';
 import 'package:finance_management/repository/transaction_repository.dart';
@@ -26,7 +27,7 @@ class AddExpensesCubit extends Cubit<AddExpensesState> {
     emit(state.copyWith(transaction: transaction));
   }
 
-  Future<void> onPressSave({String? title, String? message, String? amount, String? date}) async {
+  Future<void> onPressSave({String? title, String? message, String? amount, String? date, String? type}) async {
     try {
       if (_userId == null) return;
       final transaction = state.transaction.copywith(
@@ -36,10 +37,11 @@ class AddExpensesCubit extends Cubit<AddExpensesState> {
         amount: double.parse(amount?? "0"),
         date: date,
         categoryId: state.selectedCategory.id,
+        type: TypeTransaction.expense,
       );
 
       await repository.addTransaction(transaction: transaction);
-      navigator.goback(result:  true);
+      navigator.goback(result: true);
     } catch (e) {
       debugPrint(e.toString());
     }

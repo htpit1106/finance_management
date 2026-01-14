@@ -1,11 +1,18 @@
 import 'package:finance_management/common/app_colors.dart';
 import 'package:finance_management/common/app_icons.dart';
 import 'package:finance_management/common/app_text_style.dart';
+import 'package:finance_management/model/enum/time_filter.dart';
+import 'package:finance_management/repository/summary_repository.dart';
+import 'package:finance_management/ui/page/home/home_cubit.dart';
+import 'package:finance_management/ui/page/home/home_state.dart';
 import 'package:finance_management/ui/page/home/widget/list_time_filter.dart';
 import 'package:finance_management/ui/widgets/transaction_item.dart';
 import 'package:finance_management/ui/widgets/background_app.dart';
 import 'package:finance_management/ui/widgets/header.dart';
+import 'package:finance_management/utils/app_number_utils.dart';
+import 'package:finance_management/utils/categories_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,7 +20,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomePageChild();
+    return BlocProvider<HomeCubit>(
+      create: (context) {
+        return HomeCubit(repository: SummaryRepositoryImpl());
+      },
+      child: HomePageChild(),
+    );
   }
 }
 
@@ -26,16 +38,29 @@ class HomePageChild extends StatefulWidget {
 
 class _HomePageChildState extends State<HomePageChild> {
   int selectedIndex = 0;
+  late final HomeCubit _cubit;
+
+  @override
+  void initState() {
+    super.initState();
+    _cubit = BlocProvider.of<HomeCubit>(context);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _cubit.fetchInitialData();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BackgroundApp(
       heightHeader: 350,
       header: _buildHeader(),
-      body: SingleChildScrollView(
-        child: Column(
-          spacing: 20,
-          children: [_buildSavingCard(), _buildListTimeFilter(), const SizedBox(height: 100)],
-        ),
+      body: Column(
+        children: [
+          _buildSavingCard(),
+          SizedBox(height: 20),
+          _buildListTimeFilter(),
+          Expanded(child: _buildListTransaction()),
+        ],
       ),
     );
   }
@@ -56,7 +81,17 @@ class _HomePageChildState extends State<HomePageChild> {
             IconButton(onPressed: () {}, icon: SvgPicture.asset(AppIcons.icNotification)),
           ],
         ),
-        AppHeader(),
+        BlocBuilder<HomeCubit, HomeState>(
+          buildWhen: (previous, current) =>
+              previous.totalBalance != current.totalBalance ||
+              previous.totalExpense != current.totalExpense,
+          builder: (context, state) {
+            return AppHeader(
+              balanceAmount: state.totalBalance,
+              expenseAmount: state.totalExpense,
+            );
+          },
+        ),
       ],
     );
   }
@@ -166,46 +201,36 @@ class _HomePageChildState extends State<HomePageChild> {
   }
 
   Widget _buildListTimeFilter() {
-
-    return Column(
-      children: [
-        ListTimeFilter(
+    return BlocBuilder<HomeCubit, HomeState>(
+      buildWhen: (previous, current) => previous.selectedTimeFilter != current.selectedTimeFilter,
+      builder: (context, state) {
+        return ListTimeFilter(
           listTime: ['Daily', 'Weekly', 'Monthly'],
-          selectedIndex: selectedIndex,
+          selectedIndex: state.selectedTimeFilter.index,
           onTap: (index) {
-            setState(() {
-              selectedIndex = index;
-            });
+            _cubit.changeTimeFilter(TimeFilter.values[index]);
           },
-        ),
-
-        SizedBox(height: 20),
-        _buildListTransaction(),
-      ],
+        );
+      },
     );
   }
 
   Widget _buildListTransaction() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        _buildTransaction(),
-        SizedBox(height: 20),
-        _buildTransaction(),
-        SizedBox(height: 20),
-        _buildTransaction(),
-      ],
-    );
-  }
-
-  Widget _buildTransaction() {
-    return TransactionItem(
-      iconPath: AppIcons.icSalary,
-      title: "Salary",
-      subTitle: "18:27 - April 30",
-      type: "Monthly",
-      amount: "\$20,000.00",
-      isActive: false,
+    return BlocBuilder<HomeCubit, HomeState>(
+      buildWhen: (previous, current) => previous.categorySummaryList != current.categorySummaryList,
+      builder: (context, state) {
+        return ListView.builder(
+          itemCount: state.categorySummaryList.length,
+          itemBuilder: (context, index) {
+            final data = state.categorySummaryList[index];
+            return TransactionItem(
+              title: data.categoryName ?? "no title",
+              amount: AppNumberUtils.formatDoubleTwo(data.totalAmount.toString()),
+              iconPath: CategoriesUtils.getIcon(data.categoryName ?? ""),
+            );
+          },
+        );
+      },
     );
   }
 }

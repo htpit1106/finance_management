@@ -5,6 +5,6 @@ class AddExpensesNavigator extends AppNavigator{
   AddExpensesNavigator({required super.context});
   // back
   void goback({bool? result}){
-    context.pop(result);
+    context.pop(result ?? true);
   }
 }

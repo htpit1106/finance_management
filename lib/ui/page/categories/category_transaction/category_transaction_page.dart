@@ -1,6 +1,7 @@
 import 'package:finance_management/common/app_icons.dart';
 import 'package:finance_management/common/app_text_style.dart';
 import 'package:finance_management/model/categories/category_entity.dart';
+import 'package:finance_management/model/enum/type_transaction.dart';
 import 'package:finance_management/repository/transaction_repository.dart';
 import 'package:finance_management/ui/page/categories/category_transaction/category_tranction_cubit.dart';
 import 'package:finance_management/ui/widgets/background_app.dart';
@@ -100,6 +101,9 @@ class _CategoryTransactionPageChildState extends State<CategoryTransactionPageCh
       children: [
         Expanded(
           child: BlocBuilder<CategoryTransactionCubit, CategoryTransactionState>(
+            buildWhen: (previous, current) =>
+                previous.isLoadingTransaction != current.isLoadingTransaction ||
+                previous.transactions != current.transactions,
             builder: (context, state) {
               if (state.isLoadingTransaction) {
                 return const Center(child: CircularProgressIndicator());
@@ -122,6 +126,7 @@ class _CategoryTransactionPageChildState extends State<CategoryTransactionPageCh
                         : AppDateUtils.formatDateNow(DateTime.now()),
                     amount: transaction.amount.toString(),
                     iconPath: CategoriesUtils.getIcon(widget.category.name ?? "unKnow"),
+                    typeTransaction: transaction.type ?? TypeTransaction.expense,
                   );
                 },
               );

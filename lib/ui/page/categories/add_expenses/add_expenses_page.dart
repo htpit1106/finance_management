@@ -146,7 +146,6 @@ class _AddExpensesPageChildState extends State<AddExpensesPageChild> {
                     message: _messageController.text,
                     amount: _amountController.text,
                     date: _dateController.text,
-
                   );
                 }
               },

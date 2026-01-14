@@ -1,5 +1,6 @@
 import 'package:finance_management/repository/auth_repository.dart';
 import 'package:finance_management/repository/category_repository.dart';
+import 'package:finance_management/repository/summary_repository.dart';
 import 'package:finance_management/repository/profile_repository.dart';
 import 'package:finance_management/repository/transaction_repository.dart';
 import 'package:finance_management/router/app_router.dart';
@@ -13,13 +14,15 @@ class FinanceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<AuthRepository>(create: (_) => AuthRepositoryImpl()),
         RepositoryProvider<ProfileRepository>(create: (_) => ProfileRepositoryImpl()),
         RepositoryProvider<CategoryRepository>(create: (_) => CategoryRepositoryImpl()),
         RepositoryProvider<TransactionRepository>(create: (_) => TransactionRepositoryImpl()),
+        RepositoryProvider<SummaryRepository>(
+          create: (_) => SummaryRepositoryImpl(),
+        ),
       ],
       child: FinanceAppChild(),
     );
