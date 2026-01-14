@@ -30,6 +30,5 @@ class HomeState extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [categorySummaryList, selectedTimeFilter, totalBalance, totalExpense];
 }
