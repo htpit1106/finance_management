@@ -29,7 +29,6 @@ class Auth {
 
   // change password
   static Future<String?> changePassword(String oldPassword, String newPassword) async {
-
     // Login again
     final user = supabase.auth.currentUser;
     if (user == null) return "User not found";
@@ -38,9 +37,7 @@ class Auth {
     if (res == false) {
       return "Old password is incorrect";
     }
-    await supabase.auth.updateUser(
-      UserAttributes(password: newPassword),
-    );
+    await supabase.auth.updateUser(UserAttributes(password: newPassword));
     return "Password changed successfully";
   }
 }

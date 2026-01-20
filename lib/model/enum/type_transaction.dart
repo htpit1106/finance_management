@@ -1,3 +1,1 @@
-enum TypeTransaction {
-  income, expense
-}
+enum TypeTransaction { income, expense }

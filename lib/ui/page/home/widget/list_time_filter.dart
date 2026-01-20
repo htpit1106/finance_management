@@ -8,12 +8,7 @@ class ListTimeFilter extends StatelessWidget {
   final Function(int)? onTap;
   final List<String> listTime;
 
-  const ListTimeFilter({
-    super.key,
-    this.selectedIndex = 0,
-    this.onTap,
-    required this.listTime,
-  });
+  const ListTimeFilter({super.key, this.selectedIndex = 0, this.onTap, required this.listTime});
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +26,12 @@ class ListTimeFilter extends StatelessWidget {
               for (int i = 0; i < listTime.length; i++)
                 Expanded(
                   flex: 1,
-                  child: FilterButton(text: listTime[i], isActive: selectedIndex == i,
+                  child: FilterButton(
+                    text: listTime[i],
+                    isActive: selectedIndex == i,
                     onTap: () => onTap?.call(i),
                   ),
                 ),
-
             ],
           ),
         ),

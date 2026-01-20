@@ -47,9 +47,7 @@ class _SplashPageChildState extends State<SplashPageChild> {
   Widget build(BuildContext context) {
     return BlocBuilder<SplashCubit, SplashState>(
       builder: (context, state) {
-        return Scaffold(
-          body: _loadedPage(),
-        );
+        return Scaffold(body: _loadedPage());
       },
     );
   }

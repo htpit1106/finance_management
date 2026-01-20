@@ -62,8 +62,10 @@ class _MainPageChildState extends State<MainPageChild> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        extendBody: true,
-        body: _buildPageView(), bottomNavigationBar: _buildBottomNavigationBar());
+      extendBody: true,
+      body: _buildPageView(),
+      bottomNavigationBar: _buildBottomNavigationBar(),
+    );
   }
 
   Widget _buildPageView() {

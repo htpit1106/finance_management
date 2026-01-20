@@ -35,7 +35,7 @@ class _AnalysisPageChildState extends State<AnalysisPageChild> {
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundApp(
+    return AppBackground(
       heightHeader: 350,
       header: _buildHeaderPage(),
       body: SingleChildScrollView(
@@ -71,16 +71,12 @@ class _AnalysisPageChildState extends State<AnalysisPageChild> {
         ),
         BlocBuilder<FinanceCubit, FinanceState>(
           buildWhen: (previous, current) =>
-          previous.totalBalance != current.totalBalance ||
+              previous.totalBalance != current.totalBalance ||
               previous.totalExpense != current.totalExpense,
           builder: (context, state) {
-            return AppHeader(
-              balanceAmount: state.totalBalance,
-              expenseAmount: state.totalExpense,
-            );
+            return AppHeader(balanceAmount: state.totalBalance, expenseAmount: state.totalExpense);
           },
         ),
-
       ],
     );
   }
@@ -157,7 +153,11 @@ class _AnalysisPageChildState extends State<AnalysisPageChild> {
   _buildListTarget() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [TargetButton(percent: 30, targetName: "Travel",), SizedBox(width: 10), TargetButton(percent: 50, targetName: "Car",)],
+      children: [
+        TargetButton(percent: 30, targetName: "Travel"),
+        SizedBox(width: 10),
+        TargetButton(percent: 50, targetName: "Car"),
+      ],
     );
   }
 }

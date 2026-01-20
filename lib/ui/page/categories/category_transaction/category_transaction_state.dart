@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
-import 'package:finance_management/model/categories/category_entity.dart';
-import 'package:finance_management/model/transactions/transaction_entity.dart';
+import 'package:finance_management/model/entity/categories/category_entity.dart';
+import 'package:finance_management/model/entity/transactions/transaction_entity.dart';
 
-class CategoryTransactionState extends Equatable{
+class CategoryTransactionState extends Equatable {
   final bool isLoadingTransaction;
   final CategoryEntity category;
   final List<TransactionEntity> transactions;
@@ -17,7 +17,7 @@ class CategoryTransactionState extends Equatable{
     bool? isLoadingTransaction,
     List<TransactionEntity>? transactions,
     CategoryEntity? category,
-  }){
+  }) {
     return CategoryTransactionState(
       isLoadingTransaction: isLoadingTransaction ?? this.isLoadingTransaction,
       transactions: transactions ?? this.transactions,
@@ -28,4 +28,3 @@ class CategoryTransactionState extends Equatable{
   @override
   List<Object?> get props => [isLoadingTransaction, transactions, category];
 }
-

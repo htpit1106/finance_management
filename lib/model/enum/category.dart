@@ -1,5 +1,1 @@
-
-enum Category { food, transport, medicine, groceries, rent, gifts, entertainment }
-
-
-
+enum Category {food, transport, medicine, groceries, rent, gifts, entertainment }

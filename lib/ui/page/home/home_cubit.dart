@@ -11,15 +11,12 @@ class HomeCubit extends Cubit<HomeState> {
   final SummaryRepository repository;
   final FinanceCubit financeCubit;
 
-
-  HomeCubit({required this.repository , required this.financeCubit}) : super(HomeState());
+  HomeCubit({required this.repository, required this.financeCubit}) : super(HomeState());
 
   Future<void> fetchInitialData() async {
-     financeCubit.fetchIncomeData();
+    financeCubit.fetchIncomeData();
     filterDataByTimeFilter();
   }
-
-
 
   Future<void> filterDataByTimeFilter({TypeTransaction type = TypeTransaction.expense}) async {
     try {

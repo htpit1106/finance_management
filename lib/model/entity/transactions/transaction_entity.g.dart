@@ -21,22 +21,18 @@ TransactionEntity _$TransactionEntityFromJson(Map<String, dynamic> json) =>
       type: $enumDecodeNullable(_$TypeTransactionEnumMap, json['type']),
     );
 
-Map<String, dynamic> _$TransactionEntityToJson(TransactionEntity instance) {
-  final res = <String, dynamic>{
-    'id': instance.id,
-    'created_at': instance.createdAt?.toIso8601String(),
-    'title': instance.title,
-    'user_id': instance.userId,
-    'category_id': instance.categoryId,
-    'date': instance.date,
-    'amount': instance.amount,
-    'note': instance.note,
-    'type': _$TypeTransactionEnumMap[instance.type],
-  };
-  res.removeWhere((k, v) => v == null);
-  return res;
-}
-
+Map<String, dynamic> _$TransactionEntityToJson(TransactionEntity instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'title': instance.title,
+      'user_id': instance.userId,
+      'category_id': instance.categoryId,
+      'date': instance.date,
+      'amount': instance.amount,
+      'note': instance.note,
+      'type': _$TypeTransactionEnumMap[instance.type],
+    };
 
 const _$TypeTransactionEnumMap = {
   TypeTransaction.income: 'income',

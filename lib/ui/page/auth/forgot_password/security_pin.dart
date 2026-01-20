@@ -16,6 +16,7 @@ class SecurityPinPage extends StatelessWidget {
     return SecurityPinPageChild();
   }
 }
+
 class SecurityPinPageChild extends StatefulWidget {
   const SecurityPinPageChild({super.key});
 
@@ -26,7 +27,7 @@ class SecurityPinPageChild extends StatefulWidget {
 class _SecurityPinPageChildState extends State<SecurityPinPageChild> {
   @override
   Widget build(BuildContext context) {
-    return  BackgroundApp(
+    return AppBackground(
       heightHeader: 250,
       header: Center(child: Text("Security Pin", style: AppTextStyle.greenDarkS30)),
       body: _buildBodyPage(),
@@ -36,13 +37,9 @@ class _SecurityPinPageChildState extends State<SecurityPinPageChild> {
   Widget _buildBodyPage() {
     return SingleChildScrollView(
       child: Column(
-
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            "Enter Security Pin",
-            style: AppTextStyle.greenDarkSemiBoldS20,
-          ),
+          Text("Enter Security Pin", style: AppTextStyle.greenDarkSemiBoldS20),
           const SizedBox(height: 40),
 
           Pinput(
@@ -70,7 +67,6 @@ class _SecurityPinPageChildState extends State<SecurityPinPageChild> {
             backgroundColor: AppColors.greenBtn,
           ),
 
-
           AppTextButton(
             minWidth: 170,
             text: "Send Again",
@@ -84,4 +80,3 @@ class _SecurityPinPageChildState extends State<SecurityPinPageChild> {
     );
   }
 }
-

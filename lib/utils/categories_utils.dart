@@ -13,16 +13,16 @@ class CategoriesUtils {
         return AppIcons.icMedicine;
       case 'Groceries':
         return AppIcons.icGroceries;
-
       case 'Rent':
         return AppIcons.icRent;
       case 'Gifts':
         return AppIcons.icGifts;
       case 'Entertainment':
         return AppIcons.icEntertainment;
+      case 'Savings':
+        return AppIcons.icSavings;
       default:
         return AppIcons.icMore;
     }
   }
-
 }

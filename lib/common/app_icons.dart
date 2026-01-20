@@ -8,18 +8,14 @@ class AppIcons {
   static const icCheckedTrue = "assets/icons/Checked=True.png";
   static const icCheckedFalse = "assets/icons/Checked=False.png";
 
-
   static const icNext1 = "assets/icons/ic_next1.png";
   static const icNext2 = "assets/icons/ic_next2.png";
-
 
   static const icEyeOpen = "assets/icons/eye_open.svg";
   static const icEyeClose = "assets/icons/eye_close.svg";
 
-
   static const icFacebook = "assets/icons/facebook.svg";
   static const icGoogle = "assets/icons/google.svg";
-
 
   static const icHome = "assets/icons/home.svg";
   static const icAnalysis = "assets/icons/analysis.svg";
@@ -29,7 +25,6 @@ class AppIcons {
 
   static const icNotification = "assets/icons/notification.svg";
 
-
   static const icArrowUp = "assets/icons/up_arrow.svg";
   static const icArrowDown = "assets/icons/down_arrow.svg";
 
@@ -38,7 +33,6 @@ class AppIcons {
   static const icCar = "assets/icons/car.svg";
 
   static const icSalary = "assets/icons/salary.svg";
-
 
   static const icFood = "assets/icons/food.svg";
 
@@ -64,6 +58,11 @@ class AppIcons {
   static const icEntertainment = "assets/icons/entertainment.svg";
   static const icMore = "assets/icons/more.svg";
 
+  // categories savings
+  static const icTravel = "assets/icons/travel.svg";
+  static const icHouse = "assets/icons/new_house.svg";
+  static const icWedding = "assets/icons/wedding.svg";
+  static const icAddMore = "assets/icons/add_more.svg";
 
 
 }

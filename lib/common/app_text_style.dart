@@ -36,7 +36,6 @@ class AppTextStyle {
   static final whiteS15Medium = whiteTitle.copyWith(fontSize: 15, fontWeight: FontWeight.w400);
   static final whiteS15Light = whiteTitle.copyWith(fontSize: 15, fontWeight: FontWeight.w300);
 
-
   // green
   static final greenTitle = TextStyle(
     color: AppColors.greenText,
@@ -79,20 +78,17 @@ class AppTextStyle {
   static final greenDarkSemiBoldS20 = greenDark.copyWith(fontSize: 20, fontWeight: FontWeight.w500);
   static final greenDarkLightS20 = greenDark.copyWith(fontSize: 20, fontWeight: FontWeight.w300);
 
-
   //s30
   static final greenDarkS30 = greenDark.copyWith(fontSize: 30);
   static final greenDarkMediumS30 = greenDark.copyWith(fontSize: 30, fontWeight: FontWeight.w400);
   static final greenDarkBoldS30 = greenDark.copyWith(fontSize: 30, fontWeight: FontWeight.w600);
   static final greenDarkLightS30 = greenDark.copyWith(fontSize: 30, fontWeight: FontWeight.w300);
 
-
   // s15
   static final greenDarkS15 = greenDark.copyWith(fontSize: 15);
   static final greenDarkMediumS15 = greenDark.copyWith(fontSize: 15, fontWeight: FontWeight.w400);
   static final greenDarkBoldS15 = greenDark.copyWith(fontSize: 15, fontWeight: FontWeight.w600);
   static final greenDarkLightS15 = greenDark.copyWith(fontSize: 15, fontWeight: FontWeight.w300);
-
 
   // ocean Blue
   static final oceanBlue = TextStyle(color: AppColors.oceanBlueText, fontWeight: FontWeight.w600);
@@ -118,7 +114,6 @@ class AppTextStyle {
   static final oceanBlueS14Medium = oceanBlue.copyWith(fontSize: 14, fontWeight: FontWeight.w400);
   static final oceanBlueS14Light = oceanBlue.copyWith(fontSize: 14, fontWeight: FontWeight.w300);
 
-
   //s15
   static final oceanBlueS15 = oceanBlue.copyWith(fontSize: 15);
   static final oceanBlueS15Bold = oceanBlue.copyWith(fontSize: 15, fontWeight: FontWeight.w600);
@@ -131,7 +126,6 @@ class AppTextStyle {
   static final oceanBlueS13Medium = oceanBlue.copyWith(fontSize: 13, fontWeight: FontWeight.w400);
   static final oceanBlueS13Light = oceanBlue.copyWith(fontSize: 13, fontWeight: FontWeight.w300);
 
-
   // green text
   static final green = TextStyle(color: AppColors.greenText, fontWeight: FontWeight.w600);
 
@@ -141,15 +135,11 @@ class AppTextStyle {
   static final greenS12Medium = green.copyWith(fontSize: 12, fontWeight: FontWeight.w400);
   static final greenS12Light = green.copyWith(fontSize: 12, fontWeight: FontWeight.w300);
 
-
-
   // s13
   static final greenS13 = green.copyWith(fontSize: 13);
   static final greenS13Bold = green.copyWith(fontSize: 13, fontWeight: FontWeight.w600);
   static final greenS13Medium = green.copyWith(fontSize: 13, fontWeight: FontWeight.w400);
   static final greenS13Light = green.copyWith(fontSize: 13, fontWeight: FontWeight.w300);
-
-
 
   // s14
   static final greenS14 = green.copyWith(fontSize: 14);
@@ -157,28 +147,15 @@ class AppTextStyle {
   static final greenS14Medium = green.copyWith(fontSize: 14, fontWeight: FontWeight.w400);
   static final greenS14Light = green.copyWith(fontSize: 14, fontWeight: FontWeight.w300);
 
-
-
-
   // s15
   static final greenS15 = green.copyWith(fontSize: 15);
   static final greenS15Bold = green.copyWith(fontSize: 15, fontWeight: FontWeight.w600);
   static final greenS15Medium = green.copyWith(fontSize: 15, fontWeight: FontWeight.w400);
   static final greenS15Light = green.copyWith(fontSize: 15, fontWeight: FontWeight.w300);
 
-
-
   // s20
   static final greenS20 = green.copyWith(fontSize: 20);
   static final greenS20Bold = green.copyWith(fontSize: 20, fontWeight: FontWeight.w600);
   static final greenS20Medium = green.copyWith(fontSize: 20, fontWeight: FontWeight.w400);
   static final greenS20Light = green.copyWith(fontSize: 20, fontWeight: FontWeight.w300);
-
-
-
-
-
-
-
-
 }

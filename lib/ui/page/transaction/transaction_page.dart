@@ -25,7 +25,7 @@ class TransactionPageChild extends StatefulWidget {
 class _TransactionPageChildState extends State<TransactionPageChild> {
   @override
   Widget build(BuildContext context) {
-    return BackgroundApp(heightHeader: 370, header: _buildHeader());
+    return AppBackground(heightHeader: 370, header: _buildHeader());
   }
 
   _buildHeader() {
@@ -68,15 +68,16 @@ class _TransactionPageChildState extends State<TransactionPageChild> {
             spacing: 20,
             children: [
               Flexible(flex: 1, child: SummaryCard()),
-              Flexible(flex: 1, child: SummaryCard(
-                iconPath: AppIcons.icArrowDown,
-                title: "Expense",
-                amount: 3000.0,
-                iconColor: AppColors.oceanBlue,
-                textAmountColor: AppColors.oceanBlue,
-
-
-              )),
+              Flexible(
+                flex: 1,
+                child: SummaryCard(
+                  iconPath: AppIcons.icArrowDown,
+                  title: "Expense",
+                  amount: 3000.0,
+                  iconColor: AppColors.oceanBlue,
+                  textAmountColor: AppColors.oceanBlue,
+                ),
+              ),
             ],
           ),
         ],

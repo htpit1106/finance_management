@@ -1,14 +1,13 @@
 import 'package:finance_management/common/app_icons.dart';
 import 'package:finance_management/common/app_text_style.dart';
-import 'package:finance_management/model/categories/category_entity.dart';
+import 'package:finance_management/model/entity/categories/category_entity.dart';
+import 'package:finance_management/ui/widgets/app_bar/app_bar_widget.dart';
 import 'package:finance_management/ui/widgets/background_app.dart';
 import 'package:finance_management/ui/widgets/button/app_text_button.dart';
 import 'package:finance_management/ui/widgets/text_field/app_text_field_label.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
-
 import 'add_expenses_cubit.dart';
 import 'add_expenses_navigator.dart';
 
@@ -64,33 +63,10 @@ class _AddExpensesPageChildState extends State<AddExpensesPageChild> {
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundApp(heightHeader: 170, header: _buildHeader(), body: _buildFormSubmit());
-  }
-
-  _buildHeader() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-          onPressed: () {
-            context.pop();
-          },
-          icon: SvgPicture.asset(AppIcons.icBack),
-        ),
-
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(AppIcons.icNotification),
-            iconSize: 40,
-          ),
-        ],
-        title: Center(child: Text("Add Expenses", style: AppTextStyle.greenDarkBoldS20)),
-      ),
+    return AppBackground(
+      heightHeader: 170,
+      header: AppBarWidget(title: "Add Expenses"),
+      body: _buildFormSubmit(),
     );
   }
 

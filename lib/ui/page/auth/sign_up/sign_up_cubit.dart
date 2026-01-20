@@ -1,16 +1,15 @@
 import 'package:bloc/bloc.dart';
-import 'package:finance_management/model/profile_entitty/profile_entity.dart';
 import 'package:finance_management/repository/auth_repository.dart';
 import 'package:finance_management/repository/profile_repository.dart';
 import 'package:finance_management/ui/page/auth/sign_up/sign_up_navigator.dart';
 import 'package:finance_management/ui/page/auth/sign_up/sign_up_state.dart';
 
+import '../../../../model/entity/profile_entitty/profile_entity.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
   final AuthRepository authRepos;
   final ProfileRepository profileRepos;
   final SignUpNavigator navigator;
-
 
   SignUpCubit({required this.authRepos, required this.navigator, required this.profileRepos})
     : super(SignUpState());
@@ -22,7 +21,6 @@ class SignUpCubit extends Cubit<SignUpState> {
     String? dateOfBirth,
     required String password,
   }) async {
-
     final result = await authRepos.signUp(email, password);
     if (result) {
       emit(SignUpState(isLoading: true));

@@ -21,22 +21,15 @@ ProfileEntity _$ProfileEntityFromJson(Map<String, dynamic> json) =>
       userId: json['user_id'] as String?,
     );
 
-Map<String, dynamic> _$ProfileEntityToJson(ProfileEntity instance) {
-  final result = <String, dynamic>{
-    'id': instance.id,
-    'created_at': instance.createdAt?.toIso8601String(),
-    'full_name': instance.fullName,
-    'email': instance.email,
-    'phone_number': instance.phoneNumber,
-    'date_of_birth': instance.dateOfBirth,
-    'avatar_url': instance.avatarUrl,
-    'gender': instance.gender,
-    'user_id': instance.userId,
-
-
-  };
-
-  // remove null values before serialization
-  result.removeWhere((key, value) => value == null);
-  return result;
-}
+Map<String, dynamic> _$ProfileEntityToJson(ProfileEntity instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'full_name': instance.fullName,
+      'email': instance.email,
+      'phone_number': instance.phoneNumber,
+      'date_of_birth': instance.dateOfBirth,
+      'avatar_url': instance.avatarUrl,
+      'gender': instance.gender,
+      'user_id': instance.userId,
+    };

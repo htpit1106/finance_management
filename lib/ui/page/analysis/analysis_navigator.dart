@@ -8,5 +8,4 @@ class AnalysisNavigator extends AppNavigator {
   void goSearchPage() {
     context.push(AppRouter.searchPage);
   }
-
 }

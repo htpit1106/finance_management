@@ -1,13 +1,11 @@
 import 'package:finance_management/common/app_colors.dart';
-import 'package:finance_management/common/app_icons.dart';
 import 'package:finance_management/common/app_text_style.dart';
-import 'package:finance_management/ui/page/analysis/search/search_navigator.dart';
+import 'package:finance_management/ui/widgets/app_bar/app_bar_widget.dart';
 import 'package:finance_management/ui/widgets/background_app.dart';
 import 'package:finance_management/ui/widgets/button/app_drop_down.dart';
 import 'package:finance_management/ui/widgets/button/app_text_button.dart';
 import 'package:finance_management/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalenderPage extends StatelessWidget {
@@ -64,9 +62,9 @@ class _CalendarPageChildState extends State<CalendarPageChild> {
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundApp(
+    return AppBackground(
       heightHeader: 200,
-      header: _buildHeader(),
+      header: AppBarWidget(title: "Calendar"),
       body: SingleChildScrollView(
         child: Column(
           spacing: 20,
@@ -89,41 +87,9 @@ class _CalendarPageChildState extends State<CalendarPageChild> {
                 ),
               ],
             ),
-
           ],
         ),
       ),
-    );
-  }
-
-  _buildHeader() {
-    return Column(
-      children: [
-        AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-
-          automaticallyImplyLeading: false,
-          leading: IconButton(
-            onPressed: () {
-              final navigator = SearchNavigator(context: context);
-              navigator.goBack();
-            },
-            icon: SvgPicture.asset(
-              AppIcons.icBack,
-            ),
-          ),
-
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(AppIcons.icNotification),
-              iconSize: 40,
-            ),
-          ],
-          title: Center(child: Text("Calendar", style: AppTextStyle.greenDarkBoldS20)),
-        ),
-      ],
     );
   }
 
@@ -177,7 +143,6 @@ class _CalendarPageChildState extends State<CalendarPageChild> {
             });
           },
         ),
-
       ],
     );
   }
@@ -189,16 +154,11 @@ class _CalendarPageChildState extends State<CalendarPageChild> {
         AppDropDown(
           text: months[_focusedDay.month - 1],
           onTap: () async {
-            final selectedIndex =
-            await Utils.showDiaLogDropDownPicker(context, months);
+            final selectedIndex = await Utils.showDiaLogDropDownPicker(context, months);
 
             if (selectedIndex != null) {
               setState(() {
-                _focusedDay = DateTime(
-                  _focusedDay.year,
-                  selectedIndex + 1,
-                  _focusedDay.day,
-                );
+                _focusedDay = DateTime(_focusedDay.year, selectedIndex + 1, _focusedDay.day);
               });
             }
           },
@@ -221,5 +181,4 @@ class _CalendarPageChildState extends State<CalendarPageChild> {
   _buildListTransaction() {
     return Container();
   }
-
 }

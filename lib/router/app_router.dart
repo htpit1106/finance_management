@@ -1,10 +1,11 @@
-import 'package:finance_management/model/categories/category_entity.dart';
 import 'package:finance_management/ui/page/analysis/analysis_page.dart';
 import 'package:finance_management/ui/page/auth/forgot_password/forgot_password.page.dart';
 import 'package:finance_management/ui/page/auth/forgot_password/new_password.dart';
 import 'package:finance_management/ui/page/auth/forgot_password/security_pin.dart';
 import 'package:finance_management/ui/page/categories/add_expenses/add_expenses_page.dart';
 import 'package:finance_management/ui/page/categories/category_transaction/category_transaction_page.dart';
+import 'package:finance_management/ui/page/categories/savings/detail_savings/detail_savings_page.dart';
+import 'package:finance_management/ui/page/categories/savings/savings_page.dart';
 import 'package:finance_management/ui/page/home/home_page.dart';
 import 'package:finance_management/ui/page/main/main_page.dart';
 import 'package:finance_management/ui/page/profile/profile_page.dart';
@@ -12,11 +13,13 @@ import 'package:finance_management/ui/page/start_app/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../model/entity/categories/category_entity.dart';
 import '../ui/page/analysis/calender/calender_page.dart';
 import '../ui/page/analysis/search/search_page.dart';
 import '../ui/page/auth/sign_in/sign_in_page.dart';
 import '../ui/page/auth/sign_up/sign_up_page.dart';
 import '../ui/page/categories/categories_page.dart';
+import '../ui/page/categories/savings/add_savings_dialog/add_savings_dialog.dart';
 import '../ui/page/start_app/onboarding/onboarding_page.dart';
 
 class AppRouter {
@@ -39,6 +42,12 @@ class AppRouter {
   static final String categories = "/categories";
   static final String categoryTransaction = "/category_transaction";
   static final String addExpenses = "/add_expenses";
+
+  // saving
+  static final String savings = "/savings";
+  static final String addSavings = "/add_savings";
+  static final String savingsDetail = "/savings_detail";
+  static final String addTransactionSavings = "/add_transaction_savings";
 
   static final navigationKey = GlobalKey<NavigatorState>();
   static final GoRouter router = GoRouter(
@@ -73,8 +82,8 @@ class AppRouter {
         builder: (context, state) {
           final category = state.extra as CategoryEntity;
 
-          return  AddExpensesPage(category: category,);
-        }
+          return AddExpensesPage(category: category);
+        },
       ),
 
       ShellRoute(
@@ -92,6 +101,14 @@ class AppRouter {
           ),
         ],
       ),
+      GoRoute(path: savings, name: savings, builder: (context, state) => SavingsPage()),
+      GoRoute(path: addSavings, name: addSavings, builder: (context, state) => AddSavingsDialog()),
+      GoRoute(
+        path: savingsDetail,
+        name: savingsDetail,
+        builder: (context, state) => DetailSavingsPage(),
+      ),
+
     ],
     initialLocation: splash,
     debugLogDiagnostics: false,

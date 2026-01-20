@@ -5,9 +5,7 @@ import 'package:go_router/go_router.dart';
 class OnboardingNavigator extends AppNavigator {
   OnboardingNavigator({required super.context});
 
-
-  void toSignIn(){
+  void toSignIn() {
     context.go(AppRouter.signIn);
   }
-
 }

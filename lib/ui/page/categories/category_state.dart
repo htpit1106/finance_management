@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
-import 'package:finance_management/model/categories/category_entity.dart';
+import 'package:finance_management/model/entity/categories/category_entity.dart';
 
 class CategoryState extends Equatable {
   final List<CategoryEntity> categories;
-  final CategoryEntity  selectedCategory;
+  final CategoryEntity selectedCategory;
 
   const CategoryState({required this.categories, required this.selectedCategory});
 

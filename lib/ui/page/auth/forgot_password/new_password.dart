@@ -35,9 +35,7 @@ class _NewPasswordPageChildState extends State<NewPasswordPageChild> {
 
   @override
   Widget build(BuildContext context) {
-
-
-    return BackgroundApp(
+    return AppBackground(
       heightHeader: 250,
       header: Center(child: Text("New Password", style: AppTextStyle.greenDarkS30)),
       body: _buildBodyPage(),
@@ -56,12 +54,14 @@ class _NewPasswordPageChildState extends State<NewPasswordPageChild> {
             AppTextFieldLabelPassword(
               labelText: "Password",
               validator: AppValidator.validateEmpty,
-              controller: _passwordController, obscureTextController: ObscureTextController(),
+              controller: _passwordController,
+              obscureTextController: ObscureTextController(),
             ),
 
             AppTextFieldLabelPassword(
               labelText: "Confirm Password",
-              validator: (value) => AppValidator.validateConfirmPassword(_passwordController.text,  value),
+              validator: (value) =>
+                  AppValidator.validateConfirmPassword(_passwordController.text, value),
               controller: _confirmPasswordController,
               obscureTextController: ObscureTextController(),
             ),
@@ -72,7 +72,7 @@ class _NewPasswordPageChildState extends State<NewPasswordPageChild> {
               onTap: () {},
               backgroundColor: AppColors.greenBtn,
               minWidth: double.infinity,
-              minHeight: 45
+              minHeight: 45,
             ),
           ],
         ),

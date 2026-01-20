@@ -1,9 +1,8 @@
-import 'package:finance_management/model/profile_entitty/profile_entity.dart';
 import 'package:finance_management/network/profile_client.dart';
 
+import '../model/entity/profile_entitty/profile_entity.dart';
+
 abstract class ProfileRepository {
-
-
   Future<void> updateProfile({required ProfileEntity profile});
 
   Future<ProfileEntity?> getProfileById(int id);

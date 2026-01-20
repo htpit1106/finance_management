@@ -13,7 +13,9 @@ class StorageService {
 
   // get image from storage or camera
   Future<File?> pickerImage(ImageSourceType sourceType) async {
-    final ImageSource source = (sourceType == ImageSourceType.camera) ? ImageSource.camera : ImageSource.gallery;
+    final ImageSource source = (sourceType == ImageSourceType.camera)
+        ? ImageSource.camera
+        : ImageSource.gallery;
 
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: source);
@@ -41,7 +43,6 @@ class StorageService {
     } catch (e) {
       debugPrint(e.toString());
       return null;
-
     }
   }
 }

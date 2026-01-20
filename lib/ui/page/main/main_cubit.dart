@@ -8,5 +8,4 @@ class MainCubit extends Cubit<MainState> {
   void switchTap(int index) {
     emit(state.copyWith(selectedIndex: index));
   }
-
 }

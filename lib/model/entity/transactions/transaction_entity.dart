@@ -2,6 +2,7 @@ import 'package:finance_management/model/enum/type_transaction.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'transaction_entity.g.dart';
+
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TransactionEntity {
   String? id;
@@ -13,7 +14,7 @@ class TransactionEntity {
   double? amount;
   String? note;
   TypeTransaction? type;
-  TransactionEntity ({
+  TransactionEntity({
     this.id,
     this.createdAt,
     this.userId,
@@ -22,7 +23,7 @@ class TransactionEntity {
     this.amount,
     this.note,
     this.title,
-    this.type
+    this.type,
   });
   // copy with
   TransactionEntity copywith({
@@ -34,9 +35,8 @@ class TransactionEntity {
     String? date,
     double? amount,
     String? note,
-    TypeTransaction? type
-
-  }){
+    TypeTransaction? type,
+  }) {
     return TransactionEntity(
       id: id ?? this.id,
       createdAt: createdAt ?? this.createdAt,
@@ -47,7 +47,6 @@ class TransactionEntity {
       amount: amount ?? this.amount,
       note: note ?? this.note,
       type: type ?? this.type,
-
     );
   }
 
@@ -59,5 +58,4 @@ class TransactionEntity {
     }
     return _$TransactionEntityFromJson(json);
   }
-
 }

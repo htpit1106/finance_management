@@ -45,7 +45,6 @@ class _SignUpPageChildState extends State<SignUpPageChild> {
   late final TextEditingController _passwordController;
   late final TextEditingController _confirmPasswordController;
 
-
   @override
   void initState() {
     super.initState();
@@ -59,7 +58,7 @@ class _SignUpPageChildState extends State<SignUpPageChild> {
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundApp(
+    return AppBackground(
       heightHeader: 200,
       header: Center(child: Text("Create Account", style: AppTextStyle.greenDarkS30)),
       body: buildFormBody(),
@@ -102,16 +101,17 @@ class _SignUpPageChildState extends State<SignUpPageChild> {
             AppTextFieldLabelPassword(
               labelText: "Password",
               validator: AppValidator.validateEmpty,
-              controller: _passwordController, obscureTextController: ObscureTextController(),
+              controller: _passwordController,
+              obscureTextController: ObscureTextController(),
             ),
 
             AppTextFieldLabelPassword(
               labelText: "Confirm Password",
-              validator: (value) => AppValidator.validateConfirmPassword(_passwordController.text,  value),
+              validator: (value) =>
+                  AppValidator.validateConfirmPassword(_passwordController.text, value),
               controller: _confirmPasswordController,
               obscureTextController: ObscureTextController(),
             ),
-
 
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -122,27 +122,27 @@ class _SignUpPageChildState extends State<SignUpPageChild> {
             ),
             BlocBuilder<SignUpCubit, SignUpState>(
               builder: (context, state) {
-                return state.isLoading ? CircularProgressIndicator() : AppTextButton(
-                  minHeight: 45,
-                  minWidth: 200,
-                  text: "Sign Up",
-                  backgroundColor: AppColors.greenBtn,
-                  onTap: () {
-                    if (_formKey.currentState!.validate()) {
-                      cubit.onPressSignUp(
-                        fullName: _nameController.text,
-                        email: _emailController.text,
-                        mobileNumber: _mobileController.text,
-                        dateOfBirth: _passwordController.text,
-                        password: _passwordController.text,
+                return state.isLoading
+                    ? CircularProgressIndicator()
+                    : AppTextButton(
+                        minHeight: 45,
+                        minWidth: 200,
+                        text: "Sign Up",
+                        backgroundColor: AppColors.greenBtn,
+                        onTap: () {
+                          if (_formKey.currentState!.validate()) {
+                            cubit.onPressSignUp(
+                              fullName: _nameController.text,
+                              email: _emailController.text,
+                              mobileNumber: _mobileController.text,
+                              dateOfBirth: _passwordController.text,
+                              password: _passwordController.text,
+                            );
+                          }
+                        },
                       );
-                    }
-                  },);
-
-
-              }
+              },
             ),
-
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

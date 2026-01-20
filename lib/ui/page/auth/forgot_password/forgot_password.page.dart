@@ -27,12 +27,11 @@ class ForgotPasswordPageChild extends StatefulWidget {
 class _ForgotPasswordPageChildState extends State<ForgotPasswordPageChild> {
   @override
   Widget build(BuildContext context) {
-    return BackgroundApp(
-        heightHeader: 250,
-        header: Center(child: Text("Forgot Password", style: AppTextStyle.greenDarkS30)),
-        body: _buildBodyPage(),
-      );
-
+    return AppBackground(
+      heightHeader: 250,
+      header: Center(child: Text("Forgot Password", style: AppTextStyle.greenDarkS30)),
+      body: _buildBodyPage(),
+    );
   }
 
   Widget _buildBodyPage() {
@@ -41,7 +40,7 @@ class _ForgotPasswordPageChildState extends State<ForgotPasswordPageChild> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 20),
-          Text("Reset password? ", style: AppTextStyle.greenDarkBoldS20, ),
+          Text("Reset password? ", style: AppTextStyle.greenDarkBoldS20),
           Text(
             "Please enter your email address. You will receive a link to create a new password via email. ",
             style: AppTextStyle.greenDarkLightS12,
@@ -61,11 +60,10 @@ class _ForgotPasswordPageChildState extends State<ForgotPasswordPageChild> {
               text: "Next Step",
               onTap: () {
                 context.push(AppRouter.securityPin);
-
               },
               backgroundColor: AppColors.greenBtn,
             ),
-          )
+          ),
         ],
       ),
     );

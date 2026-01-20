@@ -45,12 +45,12 @@ class _OnboardingPageChildState extends State<OnboardingPageChild> {
           return onboardingFirstPage();
         }
         return onboardingSecondPage();
-      }
+      },
     );
   }
 
   Widget onboardingFirstPage() {
-    return BackgroundApp(
+    return AppBackground(
       header: Padding(
         padding: const EdgeInsets.all(70.0),
         child: Center(child: Text("Welcome To Expense Manager", textAlign: TextAlign.center)),
@@ -58,7 +58,7 @@ class _OnboardingPageChildState extends State<OnboardingPageChild> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(AppImages.onboardingImg1, width: 287, height: 287,),
+          Image.asset(AppImages.onboardingImg1, width: 287, height: 287),
           SizedBox(height: 20),
           TextButton(
             onPressed: () {
@@ -74,10 +74,15 @@ class _OnboardingPageChildState extends State<OnboardingPageChild> {
   }
 
   Widget onboardingSecondPage() {
-    return BackgroundApp(
+    return AppBackground(
       header: Padding(
         padding: const EdgeInsets.all(70.0),
-        child: Center(child: Text("¿Are you ready to take control of your finances?", textAlign: TextAlign.center)),
+        child: Center(
+          child: Text(
+            "¿Are you ready to take control of your finances?",
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

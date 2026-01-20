@@ -2,16 +2,14 @@ import 'package:finance_management/common/app_navigator.dart';
 import 'package:finance_management/router/app_router.dart';
 import 'package:go_router/go_router.dart';
 
-class SignUpNavigator extends AppNavigator{
+class SignUpNavigator extends AppNavigator {
   SignUpNavigator({required super.context});
 
-  void toSignIn(){
+  void toSignIn() {
     context.push(AppRouter.signIn);
   }
 
-  void goHome(){
+  void goHome() {
     context.go(AppRouter.home);
   }
-
-
 }

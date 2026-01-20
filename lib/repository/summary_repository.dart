@@ -1,4 +1,4 @@
-import 'package:finance_management/model/categories/category_summary/category_summary_entity.dart';
+import 'package:finance_management/model/entity/categories/category_summary/category_summary_entity.dart';
 import 'package:finance_management/model/enum/type_transaction.dart';
 import 'package:finance_management/network/supabase_util.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +61,7 @@ class SummaryRepositoryImpl extends SummaryRepository {
       final data = (res as List).first;
 
       return {
-        "income": (data["total_income"] as num).toDouble() ,
+        "income": (data["total_income"] as num).toDouble(),
         "expense": (data["total_expense"] as num).toDouble(),
       };
     } catch (e) {

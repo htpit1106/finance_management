@@ -4,6 +4,7 @@ import 'package:finance_management/network/supabase_util.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
 final supabase = Supabase.instance.client;
 
 void main() async {
@@ -12,6 +13,3 @@ void main() async {
   await SupabaseUtil.init(AppConstants.urlSupabase, AppConstants.anonKeySupabase);
   runApp(FinanceApp());
 }
-
-
-

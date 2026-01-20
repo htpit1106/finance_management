@@ -1,6 +1,6 @@
 import 'package:finance_management/common/app_icons.dart';
 import 'package:finance_management/common/app_text_style.dart';
-import 'package:finance_management/ui/page/analysis/search/search_navigator.dart';
+import 'package:finance_management/ui/widgets/app_bar/app_bar_widget.dart';
 import 'package:finance_management/ui/widgets/background_app.dart';
 import 'package:finance_management/ui/widgets/button/app_radio_button.dart';
 import 'package:finance_management/ui/widgets/button/app_text_button.dart';
@@ -31,7 +31,7 @@ class _SearchPageChildState extends State<SearchPageChild> {
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundApp(
+    return AppBackground(
       heightHeader: 220,
       header: _buildHeader(),
       body: SingleChildScrollView(
@@ -43,27 +43,7 @@ class _SearchPageChildState extends State<SearchPageChild> {
   Widget _buildHeader() {
     return Column(
       children: [
-        AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-
-          leading: IconButton(
-            onPressed: () {
-              final navigator = SearchNavigator(context: context);
-              navigator.goBack();
-            },
-            icon: SvgPicture.asset(AppIcons.icBack),
-          ),
-
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(AppIcons.icNotification),
-              iconSize: 40,
-            ),
-          ],
-          title: Center(child: Text("Search", style: AppTextStyle.greenDarkBoldS20)),
-        ),
+        AppBarWidget(title: "Search"),
 
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
@@ -146,7 +126,6 @@ class _SearchPageChildState extends State<SearchPageChild> {
               SimpleTransactionItem(),
             ],
           ),
-
         ],
       ),
     );

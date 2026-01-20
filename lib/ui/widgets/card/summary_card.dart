@@ -13,7 +13,6 @@ class SummaryCard extends StatelessWidget {
   final Color textTitleColor;
   final String iconPath;
 
-
   const SummaryCard({
     super.key,
     this.title = "Income",

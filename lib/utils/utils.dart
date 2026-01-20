@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Utils {
-
   Utils._();
 
   static Future<int?> showDiaLogDropDownPicker(
-      BuildContext context,
-      List<String> listItemText,
-      ) async {
+    BuildContext context,
+    List<String> listItemText,
+  ) async {
     return showDialog<int>(
       context: context,
       builder: (context) {
@@ -32,8 +31,6 @@ class Utils {
       },
     );
   }
-
-
 }
 
 // update month{

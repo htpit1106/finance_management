@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'profile_entity.g.dart';
+
 @JsonSerializable(fieldRename: FieldRename.snake)
 class ProfileEntity {
   int? id;

@@ -59,10 +59,7 @@ class TransactionItem extends StatelessWidget {
             height: 36,
             child: VerticalDivider(color: AppColors.dividerGreen, thickness: 0.5),
           ),
-          Flexible(
-            flex: 1,
-            child: Text(time, style: AppTextStyle.greenDarkLightS13, maxLines: 1),
-          ),
+          Flexible(flex: 1, child: Text(time, style: AppTextStyle.greenDarkLightS13, maxLines: 1)),
           SizedBox(
             height: 36,
             child: VerticalDivider(color: AppColors.dividerGreen, thickness: 0.5),

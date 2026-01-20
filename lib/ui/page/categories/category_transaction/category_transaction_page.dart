@@ -1,9 +1,10 @@
-import 'package:finance_management/common/app_icons.dart';
-import 'package:finance_management/common/app_text_style.dart';
-import 'package:finance_management/model/categories/category_entity.dart';
+import 'package:finance_management/global/finance/finance_cubit.dart';
+import 'package:finance_management/global/finance/finance_state.dart';
+import 'package:finance_management/model/entity/categories/category_entity.dart';
 import 'package:finance_management/model/enum/type_transaction.dart';
 import 'package:finance_management/repository/transaction_repository.dart';
 import 'package:finance_management/ui/page/categories/category_transaction/category_tranction_cubit.dart';
+import 'package:finance_management/ui/widgets/app_bar/app_bar_widget.dart';
 import 'package:finance_management/ui/widgets/background_app.dart';
 import 'package:finance_management/ui/widgets/button/app_text_button.dart';
 import 'package:finance_management/ui/widgets/header.dart';
@@ -12,9 +13,6 @@ import 'package:finance_management/utils/app_date_utils.dart';
 import 'package:finance_management/utils/categories_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
-
 import 'category_transaction_navigator.dart';
 import 'category_transaction_state.dart';
 
@@ -59,39 +57,21 @@ class _CategoryTransactionPageChildState extends State<CategoryTransactionPageCh
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundApp(heightHeader: 340, header: _buildHeaderPage(), body: _buildBody());
+    return AppBackground(heightHeader: 340, header: _buildHeaderPage(), body: _buildBody());
   }
 
   _buildHeaderPage() {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-
-            automaticallyImplyLeading: false,
-            leading: IconButton(
-              onPressed: () {
-                context.pop();
-              },
-              icon: SvgPicture.asset(AppIcons.icBack),
-            ),
-
-            actions: [
-              IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset(AppIcons.icNotification),
-                iconSize: 40,
-              ),
-            ],
-            title: Center(
-              child: Text(widget.category.name ?? "unKnow", style: AppTextStyle.greenDarkBoldS20),
-            ),
-          ),
+        AppBarWidget(title: widget.category.name ?? "unKnow"),
+        BlocBuilder<FinanceCubit, FinanceState>(
+          buildWhen: (previous, current) =>
+              previous.totalBalance != current.totalBalance ||
+              previous.totalExpense != current.totalExpense,
+          builder: (context, state) {
+            return AppHeader(balanceAmount: state.totalBalance, expenseAmount: state.totalExpense);
+          },
         ),
-        AppHeader(),
       ],
     );
   }

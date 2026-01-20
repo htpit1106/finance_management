@@ -1,5 +1,6 @@
-import 'package:finance_management/model/transactions/transaction_entity.dart';
 import 'package:finance_management/network/supabase_util.dart';
+
+import '../model/entity/transactions/transaction_entity.dart';
 
 abstract class TransactionRepository {
   Future<List<TransactionEntity>> getTransactionsByCategoryId(String categoryId);

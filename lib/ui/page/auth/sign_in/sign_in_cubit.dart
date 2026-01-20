@@ -8,14 +8,14 @@ class SignInCubit extends Cubit<SignInState> {
   final AuthRepository authRepos;
   SignInCubit({required this.navigator, required this.authRepos}) : super(SignInState());
 
-  void onPressSignUp(){
+  void onPressSignUp() {
     navigator.toSignUp();
-
   }
+
   Future<void> onPressLogIn({required String email, required String password}) async {
     emit(SignInState(isLoading: true));
     final result = await authRepos.signIn(email, password);
-    if (!result){
+    if (!result) {
       emit(SignInState(isLoading: false));
       navigator.showError("Email or password not true");
       return;
@@ -23,8 +23,8 @@ class SignInCubit extends Cubit<SignInState> {
     emit(SignInState(isLoading: false));
     navigator.goHome();
   }
-  void onPressForgotPassword(){
+
+  void onPressForgotPassword() {
     navigator.openForgotPassword();
   }
-
 }

@@ -14,11 +14,9 @@ class AppColors {
 
   static const Color black = Color(0xFF000000);
 
-
   static const Color lightBackground = Color(0xFFF1FFF3);
   static const Color darkBackground = Color(0xFF031314);
   static const Color backgroundColor = Color(0xFF00D09E);
-
 
   static const Color greenBtn = Color(0xFF00D09E);
   static const Color lightGreenBtn = Color(0xFFDFF7E2);
@@ -28,13 +26,9 @@ class AppColors {
 
   static const Color greenBorder = Color(0xFF00D09E);
 
-
-
-
   static const Color transparent = Colors.transparent;
 
-
- // text color
+  // text color
   static const Color greenText = Color(0xFF00D09E);
   static const Color greenDarkText = Color(0xFF0E3E3E);
   static const Color blackText = Color(0xFF4B4544);
@@ -42,10 +36,8 @@ class AppColors {
 
   static const Color hintText = Color(0x73093030);
 
-
   // divider
   static const Color dividerGreen = Color(0xFF00D09E);
-
 
   // icon color
   static const Color primaryIconColor = Colors.black87;

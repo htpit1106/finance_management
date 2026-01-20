@@ -33,8 +33,9 @@ class SimpleTransactionItem extends StatelessWidget {
         title: Text(title, style: AppTextStyle.greenDarkS15),
         subtitle: Text(subTitle, style: AppTextStyle.oceanBlueS12),
         trailing: Text(
-            typeTransaction == TypeTransaction.income ? "\$${AppNumberUtils.formatDoubleTwo(amount)}" :
-            "-\$${AppNumberUtils.formatDoubleTwo(amount)}",
+          typeTransaction == TypeTransaction.income
+              ? "\$${AppNumberUtils.formatDoubleTwo(amount)}"
+              : "-\$${AppNumberUtils.formatDoubleTwo(amount)}",
           style: typeTransaction == TypeTransaction.income
               ? AppTextStyle.greenDarkMediumS15
               : AppTextStyle.oceanBlueS15Medium,

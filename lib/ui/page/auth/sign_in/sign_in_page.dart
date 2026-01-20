@@ -51,12 +51,13 @@ class _SignInPageChildState extends State<SignInPageChild> {
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundApp(heightHeader: 250, header: buildHeader(), body: buildFormBody());
+    return AppBackground(heightHeader: 250, header: buildHeader(), body: buildFormBody());
   }
 
   Widget buildHeader() {
     return Center(child: Text("Welcome", style: AppTextStyle.greenDarkS30));
   }
+
   Widget buildFormBody() {
     return Form(
       key: _formKey,
@@ -75,10 +76,10 @@ class _SignInPageChildState extends State<SignInPageChild> {
 
             obscureText: true,
             validator: AppValidator.validateEmpty,
-            controller: _passwordController, obscureTextController: ObscureTextController(),
+            controller: _passwordController,
+            obscureTextController: ObscureTextController(),
           ),
-          
-          
+
           SizedBox(height: 20),
           AppTextButton(
             minHeight: 45,
@@ -95,8 +96,9 @@ class _SignInPageChildState extends State<SignInPageChild> {
             },
           ),
           GestureDetector(
-              onTap: cubit.onPressForgotPassword,
-              child: Text("Forget Password?", style: AppTextStyle.greenDarkS14)),
+            onTap: cubit.onPressForgotPassword,
+            child: Text("Forget Password?", style: AppTextStyle.greenDarkS14),
+          ),
           SizedBox(height: 20),
           Text("or sign up with ", style: AppTextStyle.greenDarkLightS12),
           Row(

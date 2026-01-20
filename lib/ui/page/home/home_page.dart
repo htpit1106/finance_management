@@ -24,8 +24,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<HomeCubit>(
       create: (context) {
-        return HomeCubit(repository: context.read<SummaryRepository>(),
-          financeCubit: context.read<FinanceCubit>());
+        return HomeCubit(
+          repository: context.read<SummaryRepository>(),
+          financeCubit: context.read<FinanceCubit>(),
+        );
       },
       child: HomePageChild(),
     );
@@ -54,7 +56,7 @@ class _HomePageChildState extends State<HomePageChild> {
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundApp(
+    return AppBackground(
       heightHeader: 350,
       header: _buildHeader(),
       body: Column(
@@ -89,10 +91,7 @@ class _HomePageChildState extends State<HomePageChild> {
               previous.totalBalance != current.totalBalance ||
               previous.totalExpense != current.totalExpense,
           builder: (context, state) {
-            return AppHeader(
-              balanceAmount: state.totalBalance,
-              expenseAmount: state.totalExpense,
-            );
+            return AppHeader(balanceAmount: state.totalBalance, expenseAmount: state.totalExpense);
           },
         ),
       ],

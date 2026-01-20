@@ -1,17 +1,18 @@
 import 'package:finance_management/common/app_icons.dart';
 import 'package:finance_management/common/app_text_style.dart';
+import 'package:finance_management/global/finance/finance_cubit.dart';
+import 'package:finance_management/global/finance/finance_state.dart';
 import 'package:finance_management/repository/category_repository.dart';
 import 'package:finance_management/ui/page/categories/categories_cubit.dart';
 import 'package:finance_management/ui/page/categories/categories_navigator.dart';
 import 'package:finance_management/ui/page/categories/category_state.dart';
+import 'package:finance_management/ui/page/categories/widget/icon_button_label.dart';
 import 'package:finance_management/ui/widgets/background_app.dart';
-import 'package:finance_management/ui/widgets/button/app_icon_button.dart';
 import 'package:finance_management/ui/widgets/header.dart';
 import 'package:finance_management/utils/categories_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-
 
 class CategoriesPage extends StatelessWidget {
   const CategoriesPage({super.key});
@@ -37,6 +38,7 @@ class CategoriesPageChild extends StatefulWidget {
 
 class _CategoriesPageChildState extends State<CategoriesPageChild> {
   late final CategoriesCubit cubit;
+
   @override
   void initState() {
     super.initState();
@@ -44,13 +46,11 @@ class _CategoriesPageChildState extends State<CategoriesPageChild> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       cubit.fetchCategories();
     });
-
-
-
   }
+
   @override
   Widget build(BuildContext context) {
-    return BackgroundApp(
+    return AppBackground(
       heightHeader: 320,
       header: _buildHeaderPage(),
       body: _buildGridViewCategory(context),
@@ -76,7 +76,14 @@ class _CategoriesPageChildState extends State<CategoriesPageChild> {
             ],
           ),
         ),
-        AppHeader(),
+        BlocBuilder<FinanceCubit, FinanceState>(
+          buildWhen: (previous, current) =>
+              previous.totalBalance != current.totalBalance ||
+              previous.totalExpense != current.totalExpense,
+          builder: (context, state) {
+            return AppHeader(balanceAmount: state.totalBalance, expenseAmount: state.totalExpense);
+          },
+        ),
       ],
     );
   }
@@ -84,19 +91,18 @@ class _CategoriesPageChildState extends State<CategoriesPageChild> {
   _buildGridViewCategory(BuildContext context) {
     return BlocBuilder<CategoriesCubit, CategoryState>(
       buildWhen: (previous, current) => previous.categories != current.categories,
-
       builder: (context, state) {
         return GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
           itemCount: state.categories.length,
           itemBuilder: (BuildContext context, int index) {
             final category = state.categories[index];
-            // category to enum to get icon
-            return _iconButtonLabel(
-              context,
-              iconPath: CategoriesUtils.getIcon(category.name?? ""),
+
+            return IconButtonLabel(
+              iconPath: CategoriesUtils.getIcon(category.name ?? ""),
               label: category.name ?? "unKnow",
               onTap: () {
+                // truong hop = Saving
                 cubit.selectCategory(category);
                 cubit.onPressCategoriesBtn();
               },
@@ -104,20 +110,6 @@ class _CategoriesPageChildState extends State<CategoriesPageChild> {
           },
         );
       },
-    );
-  }
-
-  _iconButtonLabel(BuildContext context, {required String iconPath, required String label, required VoidCallback onTap}) {
-    return Column(
-      children: [
-        AppIconButton(
-          iconPath: iconPath,
-          size: 90,
-          isActive: false,
-          onTap: onTap
-        ),
-        Text(label, style: AppTextStyle.greenDarkS14),
-      ],
     );
   }
 }

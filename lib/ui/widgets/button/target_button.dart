@@ -7,6 +7,7 @@ class TargetButton extends StatelessWidget {
   final String targetName;
   final double minHeigh;
   final double minWidth;
+  final Widget? icon;
 
   const TargetButton({
     super.key,
@@ -14,6 +15,7 @@ class TargetButton extends StatelessWidget {
     this.minWidth = 150,
     this.minHeigh = 150,
     this.targetName = "My Target",
+    this.icon,
   });
 
   @override
@@ -38,7 +40,7 @@ class TargetButton extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.white, width: 2.5),
                 ),
-                child: Center(child: Text("$percent%", style: AppTextStyle.whiteS15Bold)),
+                child: Center(child: icon?? Text("$percent%", style: AppTextStyle.whiteS15Bold)),
               ),
               SizedBox(
                 width: 80,
@@ -47,13 +49,12 @@ class TargetButton extends StatelessWidget {
                   value: percent / 100,
                   color: AppColors.oceanBlue,
                   strokeWidth: 5,
-
                 ),
               ),
             ],
           ),
           SizedBox(height: 5),
-          Text(targetName, style: AppTextStyle.whiteS15Medium)
+          Text(targetName, style: AppTextStyle.whiteS15Medium),
         ],
       ),
     );

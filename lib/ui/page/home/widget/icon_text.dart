@@ -15,11 +15,11 @@ class IconText extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SvgPicture.asset(icPath, width: fontSize, height: fontSize),
-        SizedBox(width: 5,),
-        Text(text, style: TextStyle(
-          fontSize: fontSize,
-          fontWeight: FontWeight.w400,
-        ),)
+        SizedBox(width: 5),
+        Text(
+          text,
+          style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w400),
+        ),
       ],
     );
   }

@@ -12,6 +12,7 @@ class SignInNavigator extends AppNavigator {
   void goHome() {
     context.go(AppRouter.home);
   }
+
   void openForgotPassword() {
     context.push(AppRouter.forgotPassword);
   }

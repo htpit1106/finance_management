@@ -55,9 +55,12 @@ class AppTextFieldLabelPassword extends StatelessWidget {
                   onTap: () {
                     obscureTextController.toggle();
                   },
-                  child:  Padding(
+                  child: Padding(
                     padding: const EdgeInsets.only(right: 16),
-                    child: SvgPicture.asset(value ? AppIcons.icEyeClose : AppIcons.icEyeOpen, width: 15, height: 10,
+                    child: SvgPicture.asset(
+                      value ? AppIcons.icEyeClose : AppIcons.icEyeOpen,
+                      width: 15,
+                      height: 10,
                     ),
                   ),
                 ),

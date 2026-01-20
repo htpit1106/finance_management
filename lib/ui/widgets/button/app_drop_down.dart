@@ -10,19 +10,17 @@ class AppDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-      return Material(
-        color: AppColors.transparent,
-        child: InkWell(
-          onTap: onTap,
-          child: Row(
-            children: [
-              Text(text, style: AppTextStyle.greenS15Medium),
-              Icon(Icons.keyboard_arrow_down, color: Color(0xFF00C491)),
-            ],
-          ),
+    return Material(
+      color: AppColors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        child: Row(
+          children: [
+            Text(text, style: AppTextStyle.greenS15Medium),
+            Icon(Icons.keyboard_arrow_down, color: Color(0xFF00C491)),
+          ],
         ),
-      );
-
+      ),
+    );
   }
 }
