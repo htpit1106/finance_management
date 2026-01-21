@@ -57,7 +57,7 @@ class _HomePageChildState extends State<HomePageChild> {
   @override
   Widget build(BuildContext context) {
     return AppBackground(
-      heightHeader: 350,
+      heightHeader: 330,
       header: _buildHeader(),
       body: Column(
         children: [
@@ -86,6 +86,7 @@ class _HomePageChildState extends State<HomePageChild> {
             IconButton(onPressed: () {}, icon: SvgPicture.asset(AppIcons.icNotification)),
           ],
         ),
+        SizedBox(height: 10),
         BlocBuilder<FinanceCubit, FinanceState>(
           buildWhen: (previous, current) =>
               previous.totalBalance != current.totalBalance ||

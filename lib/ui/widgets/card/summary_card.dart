@@ -1,6 +1,7 @@
 import 'package:finance_management/common/app_colors.dart';
 import 'package:finance_management/common/app_icons.dart';
 import 'package:finance_management/common/app_text_style.dart';
+import 'package:finance_management/utils/app_number_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -28,14 +29,17 @@ class SummaryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(18), color: backgroundColor),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(iconPath, color: iconColor, width: 25, height: 25),
           Text(title, style: AppTextStyle.greenDarkS15.copyWith(color: textTitleColor)),
-          Text("\$$amount", style: AppTextStyle.greenDarkBoldS20.copyWith(color: textAmountColor)),
+          Text(
+            "\$${AppNumberUtils.formatDoubleTwo(amount)}",
+            style: AppTextStyle.greenDarkBoldS20.copyWith(color: textAmountColor, overflow: TextOverflow.ellipsis),
+          ),
         ],
       ),
     );

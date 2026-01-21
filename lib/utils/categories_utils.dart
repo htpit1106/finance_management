@@ -21,6 +21,15 @@ class CategoriesUtils {
         return AppIcons.icEntertainment;
       case 'Savings':
         return AppIcons.icSavings;
+      case 'Car':
+        return AppIcons.icCar;
+      case 'Travel':
+        return AppIcons.icTravel;
+      case 'New House':
+        return AppIcons.icHouse;
+      case 'Wedding':
+        return AppIcons.icWedding;
+
       default:
         return AppIcons.icMore;
     }

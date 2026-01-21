@@ -32,10 +32,9 @@ class TransactionEntity {
     String? title,
     String? userId,
     String? categoryId,
-    String? date,
     double? amount,
     String? note,
-    TypeTransaction? type,
+
   }) {
     return TransactionEntity(
       id: id ?? this.id,
@@ -43,10 +42,9 @@ class TransactionEntity {
       title: title ?? this.title,
       userId: userId ?? this.userId,
       categoryId: categoryId ?? this.categoryId,
-      date: date ?? this.date,
       amount: amount ?? this.amount,
       note: note ?? this.note,
-      type: type ?? this.type,
+
     );
   }
 

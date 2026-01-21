@@ -74,6 +74,7 @@ class _MainPageChildState extends State<MainPageChild> {
       onPageChanged: (index) {
         _cubit.switchTap(index);
       },
+      physics: const NeverScrollableScrollPhysics(),
       children: pageList,
     );
   }

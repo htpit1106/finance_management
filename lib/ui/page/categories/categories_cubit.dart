@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:finance_management/model/entity/categories/category_entity.dart';
+import 'package:finance_management/model/enum/type_transaction.dart';
 import 'package:finance_management/repository/category_repository.dart';
 import 'package:finance_management/ui/page/categories/categories_navigator.dart';
 import 'package:finance_management/ui/page/categories/category_state.dart';
@@ -19,7 +20,7 @@ class CategoriesCubit extends Cubit<CategoryState> {
 
   Future<void> fetchCategories() async {
     try {
-      final categories = await categoryRepository.getCategoriesExpense();
+      final categories = await categoryRepository.getCategoriesByType(TypeTransaction.expense);
       emit(state.copyWith(categories: categories));
     } catch (e) {
       debugPrint(e.toString());

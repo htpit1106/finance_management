@@ -92,7 +92,7 @@ class _SavingsPageChildState extends State<SavingsPageChild> {
                     iconPath: type.iconPath,
 
                     onTap: () {
-                      _cubit.onPressAddSavings();
+                      _cubit.onPressAddSavings(category);
                     },
                   );
                 },

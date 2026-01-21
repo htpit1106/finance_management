@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:finance_management/model/entity/categories/category_entity.dart';
 import 'package:finance_management/model/entity/transactions/transaction_entity.dart';
-import 'package:finance_management/model/enum/type_transaction.dart';
 import 'package:finance_management/network/supabase_util.dart';
 import 'package:finance_management/repository/transaction_repository.dart';
 import 'package:finance_management/ui/page/categories/add_expenses/add_expenses_navigator.dart';
@@ -32,7 +31,6 @@ class AddExpensesCubit extends Cubit<AddExpensesState> {
     String? message,
     String? amount,
     String? date,
-    String? type,
   }) async {
     try {
       if (_userId == null) return;
@@ -41,9 +39,7 @@ class AddExpensesCubit extends Cubit<AddExpensesState> {
         title: title,
         note: message,
         amount: double.parse(amount ?? "0"),
-        date: date,
         categoryId: state.selectedCategory.id,
-        type: TypeTransaction.expense,
       );
 
       await repository.addTransaction(transaction: transaction);

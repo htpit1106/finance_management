@@ -37,4 +37,5 @@ Map<String, dynamic> _$TransactionEntityToJson(TransactionEntity instance) =>
 const _$TypeTransactionEnumMap = {
   TypeTransaction.income: 'income',
   TypeTransaction.expense: 'expense',
+  TypeTransaction.saving: 'saving',
 };

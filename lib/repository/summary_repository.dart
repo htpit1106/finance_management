@@ -18,6 +18,14 @@ abstract class SummaryRepository {
 
   // total income and expense
   Future<Map<String, double>> getTotalIncomeExpense({DateTime? from, DateTime? to});
+
+  Future<double> getTotalAmountByCategoryId({
+    required String categoryId,
+    DateTime? from,
+    DateTime? to,
+  });
+
+  Future<double> getTargetAmountByCategoryId({required String categoryId});
 }
 
 class SummaryRepositoryImpl extends SummaryRepository {
@@ -67,6 +75,52 @@ class SummaryRepositoryImpl extends SummaryRepository {
     } catch (e) {
       debugPrint(e.toString());
       return {"income": 0, "expense": 0};
+    }
+  }
+
+  @override
+  Future<double> getTotalAmountByCategoryId({
+    required String categoryId,
+    DateTime? from,
+    DateTime? to,
+  }) async {
+    try {
+      if (_userId == null) {
+        return 0;
+      }
+      final res = await SupabaseUtil.client.rpc(
+        "get_total_by_category_id",
+        params: {
+          'p_user_id': _userId,
+          'p_category_id': categoryId,
+          'p_from': from?.toIso8601String(),
+          'p_to': to?.toIso8601String(),
+        },
+      );
+      final data = (res as List).first;
+      return (data["total_amount"] as num).toDouble();
+    } catch (e) {
+      debugPrint(e.toString());
+      return 0;
+    }
+  }
+
+  @override
+  Future<double> getTargetAmountByCategoryId({required String categoryId}) async {
+    try {
+      if (_userId == null) {
+        return 0;
+      }
+      final res = await SupabaseUtil.client
+          .from("savings")
+          .select("target_amount")
+          .eq("user_id", _userId)
+          .eq("category_id", categoryId);
+      final data = res as List;
+      return (data.first["target_amount"] as num).toDouble();
+    } catch (e) {
+      debugPrint(e.toString());
+      return 0;
     }
   }
 }

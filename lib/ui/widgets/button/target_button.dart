@@ -3,7 +3,7 @@ import 'package:finance_management/common/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class TargetButton extends StatelessWidget {
-  final int percent;
+  final double percent;
   final String targetName;
   final double minHeigh;
   final double minWidth;

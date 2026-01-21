@@ -106,7 +106,10 @@ class AppRouter {
       GoRoute(
         path: savingsDetail,
         name: savingsDetail,
-        builder: (context, state) => DetailSavingsPage(),
+        builder: (context, state) {
+          final category = state.extra as CategoryEntity;
+          return DetailSavingsPage(category: category);
+        },
       ),
 
     ],

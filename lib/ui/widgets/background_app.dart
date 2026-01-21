@@ -32,7 +32,7 @@ class AppBackground extends StatelessWidget {
 
           /// BODY
           Positioned(
-            top: heightHeader - 0.2* heightHeader,
+            top: heightHeader - 0.27* heightHeader,
             left: 0,
             right: 0,
             bottom: 0,

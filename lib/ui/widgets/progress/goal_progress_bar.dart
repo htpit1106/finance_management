@@ -9,57 +9,86 @@ class GoalProgressBar extends StatelessWidget {
   final Color primaryColor;
   final Color secondaryColor;
 
-  const GoalProgressBar({super.key, this.percent = 0.8, this.target = 2000000,
-  this.primaryColor = AppColors.whiteIcon, this.secondaryColor = AppColors.blackText
+  const GoalProgressBar({
+    super.key,
+    this.percent = 0.01, // 1% để test
+    this.target = 2000000,
+    this.primaryColor = AppColors.whiteIcon,
+    this.secondaryColor = AppColors.blackText,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-      child: Stack(
-        children: [
-          Container(
-            height: 28,
-            decoration: BoxDecoration(color: primaryColor, borderRadius: BorderRadius.circular(50)),
-            alignment: Alignment.centerRight,
-            padding: const EdgeInsets.only(right: 16),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: FractionallySizedBox(
-              widthFactor: percent,
-              child: Container(
-                height: 28,
-                decoration: BoxDecoration(
-                  color: secondaryColor,
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(left: 8),
-                child: Text(
-                  "${(percent * 100).toInt()}%",
-                  style: AppTextStyle.whiteS12Light,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.centerRight,
+    final safePercent = percent.clamp(0.0, 1.0);
 
-            child: Padding(
-              padding: const EdgeInsets.only(right: 8.0, top: 4),
-              child: Text(
-                "\$${AppNumberUtils.formatDoubleTwo(target.toString())}",
-                style: percent > 0.8
-                    ? AppTextStyle.whiteS14Medium
-                    : AppTextStyle.greenDarkMediumS14,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final maxWidth = constraints.maxWidth;
+          final barWidth = maxWidth * safePercent;
+
+          // Ngưỡng hiển thị text phần trăm
+          final bool isSmall = safePercent < 0.15;
+
+          return Container(
+            height: 28,
+            width: maxWidth,
+            decoration: BoxDecoration(
+              color: primaryColor,
+              borderRadius: BorderRadius.circular(50),
+            ),
+            // ClipRRect ở đây là QUAN TRỌNG NHẤT để gọt bo góc cái vạch đen
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  /// Thanh tiến trình màu đen
+                  Positioned(
+                    left: 0,
+                    top: 0,
+                    bottom: 0,
+                    width: barWidth,
+                    child: Container(
+                      color: secondaryColor,
+                      alignment: Alignment.centerLeft,
+                      padding: const EdgeInsets.only(left: 12),
+                      child: !isSmall
+                          ? Text(
+                        "${(safePercent * 100).toInt()}%",
+                        style: AppTextStyle.whiteS12Light,
+                        maxLines: 1,
+                      )
+                          : const SizedBox.shrink(),
+                    ),
+                  ),
+
+                  /// Text % khi thanh quá ngắn (nằm trên nền trắng)
+                  if (isSmall && safePercent > 0)
+                    Positioned(
+                      left: barWidth + 8,
+                      child: Text(
+                        "${(safePercent * 100).toInt()}%",
+                        style: AppTextStyle.greenDarkMediumS12,
+                      ),
+                    ),
+
+                  /// Số tiền mục tiêu
+                  Positioned(
+                    right: 12,
+                    child: Text(
+                      "\$${AppNumberUtils.formatDoubleTwo(target.toString())}",
+                      style: safePercent > 0.85
+                          ? AppTextStyle.whiteS14Medium
+                          : AppTextStyle.greenDarkMediumS14,
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }

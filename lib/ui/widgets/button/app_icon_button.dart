@@ -25,22 +25,19 @@ class AppIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
+    return InkWell(
+      onTap: onTap,
 
-        child: AnimatedContainer(
-          duration: Duration(milliseconds: 100),
-          width: size,
-          height: size,
-          decoration: BoxDecoration(
-            color: isActive ? bgPressedColor : bgDefaultColor,
-            borderRadius: BorderRadius.circular(24),
-          ),
-          child: Center(
-            child: SvgPicture.asset(iconPath, color: iconColor, width: iconSize, height: iconSize),
-          ),
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 100),
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+          color: isActive ? bgPressedColor : bgDefaultColor,
+          borderRadius: BorderRadius.circular(24),
+        ),
+        child: Center(
+          child: SvgPicture.asset(iconPath, color: iconColor, width: iconSize, height: iconSize),
         ),
       ),
     );

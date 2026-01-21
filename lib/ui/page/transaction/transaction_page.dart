@@ -1,9 +1,13 @@
 import 'package:finance_management/common/app_colors.dart';
 import 'package:finance_management/common/app_icons.dart';
 import 'package:finance_management/common/app_text_style.dart';
+import 'package:finance_management/global/finance/finance_cubit.dart';
+import 'package:finance_management/global/finance/finance_state.dart';
 import 'package:finance_management/ui/widgets/background_app.dart';
 import 'package:finance_management/ui/widgets/card/summary_card.dart';
+import 'package:finance_management/utils/app_number_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TransactionPage extends StatelessWidget {
@@ -25,7 +29,7 @@ class TransactionPageChild extends StatefulWidget {
 class _TransactionPageChildState extends State<TransactionPageChild> {
   @override
   Widget build(BuildContext context) {
-    return AppBackground(heightHeader: 370, header: _buildHeader());
+    return AppBackground(heightHeader: 380, header: _buildHeader());
   }
 
   _buildHeader() {
@@ -46,40 +50,45 @@ class _TransactionPageChildState extends State<TransactionPageChild> {
               ),
             ],
           ),
-
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(18),
-              color: AppColors.lightBackground,
-            ),
-            child: Column(
+          BlocBuilder<FinanceCubit, FinanceState>(builder: (context, state){
+            return Column(
               children: [
-                Text("Total Balance"),
-                Text("\$7,783.00", style: AppTextStyle.greenDarkBoldS20),
-              ],
-            ),
-          ),
-
-          SizedBox(height: 15),
-
-          Row(
-            spacing: 20,
-            children: [
-              Flexible(flex: 1, child: SummaryCard()),
-              Flexible(
-                flex: 1,
-                child: SummaryCard(
-                  iconPath: AppIcons.icArrowDown,
-                  title: "Expense",
-                  amount: 3000.0,
-                  iconColor: AppColors.oceanBlue,
-                  textAmountColor: AppColors.oceanBlue,
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(18),
+                    color: AppColors.lightBackground,
+                  ),
+                  child: Column(
+                    children: [
+                      const  Text("Total Balance"),
+                      Text(AppNumberUtils.formatDoubleTwo(state.totalBalance ), style: AppTextStyle.greenDarkBoldS20),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
+
+                SizedBox(height: 10),
+
+                Row(
+                  spacing: 10,
+                  children: [
+                    Flexible(flex: 1, child: SummaryCard(amount: state.totalBalance + state.totalExpense,)),
+                    Flexible(
+                      flex: 1,
+                      child: SummaryCard(
+                        iconPath: AppIcons.icArrowDown,
+                        title: "Expense",
+                        amount: state.totalExpense,
+                        iconColor: AppColors.oceanBlue,
+                        textAmountColor: AppColors.oceanBlue,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            );
+          })
         ],
       ),
     );

@@ -29,16 +29,13 @@ class SimpleTransactionItem extends StatelessWidget {
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(18), color: backgroundColor),
       margin: EdgeInsets.all(0),
       child: ListTile(
-        leading: AppIconButton(iconPath: iconPath, iconSize: 30),
+        leading: AppIconButton(iconPath: iconPath, iconSize: 26),
         title: Text(title, style: AppTextStyle.greenDarkS15),
         subtitle: Text(subTitle, style: AppTextStyle.oceanBlueS12),
         trailing: Text(
-          typeTransaction == TypeTransaction.income
-              ? "\$${AppNumberUtils.formatDoubleTwo(amount)}"
-              : "-\$${AppNumberUtils.formatDoubleTwo(amount)}",
-          style: typeTransaction == TypeTransaction.income
-              ? AppTextStyle.greenDarkMediumS15
-              : AppTextStyle.oceanBlueS15Medium,
+          typeTransaction.formatAmount(double.parse(amount)),
+
+          style: typeTransaction.amountTextStyle,
         ),
       ),
     );

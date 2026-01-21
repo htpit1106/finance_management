@@ -36,7 +36,7 @@ class _AnalysisPageChildState extends State<AnalysisPageChild> {
   @override
   Widget build(BuildContext context) {
     return AppBackground(
-      heightHeader: 350,
+      heightHeader: 320,
       header: _buildHeaderPage(),
       body: SingleChildScrollView(
         child: Column(

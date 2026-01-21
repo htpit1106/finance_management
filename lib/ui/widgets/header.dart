@@ -15,8 +15,8 @@ class AppHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final percent = safePercent(expenseAmount, balanceAmount);
     return Column(
+      spacing: 10,
       children: [
-        SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -45,7 +45,7 @@ class AppHeader extends StatelessWidget {
         // process
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: GoalProgressBar(percent: percent),
+          child: GoalProgressBar(percent: percent, target: balanceAmount + expenseAmount,),
         ),
 
         // <50% look good >= 50% look bd

@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 
 class DetailSavingsNavigator extends AppNavigator {
   DetailSavingsNavigator({required super.context});
-  Future<T?> pushAddExpenses<T>({required CategoryEntity category}) {
+  Future<T?> pushAddSavings<T>({required CategoryEntity category}) {
     return context.push<T>(AppRouter.addExpenses, extra: category);
   }
 }

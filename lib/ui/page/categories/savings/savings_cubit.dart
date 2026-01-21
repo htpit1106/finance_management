@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:finance_management/model/entity/categories/category_entity.dart';
+import 'package:finance_management/model/enum/type_transaction.dart';
 import 'package:finance_management/repository/category_repository.dart';
 import 'package:finance_management/ui/page/categories/savings/savings_navigator.dart';
 import 'package:finance_management/ui/page/categories/savings/savings_state.dart';
@@ -11,14 +13,14 @@ class SavingsCubit extends Cubit<SavingsState> {
   SavingsCubit({required this.navigator, required this.repository}) : super(SavingsState());
   Future<void> fetchCategories() async {
     try {
-      final data = await repository.getSavingCategories();
+      final data = await repository.getCategoriesByType(TypeTransaction.saving);
       emit(state.copyWith(savingCategories: data));
     } catch (e) {
       debugPrint(e.toString());
     }
   }
-  void onPressAddSavings() {
-    navigator.pushDetailSaving();
+  void onPressAddSavings(CategoryEntity category) {
+    navigator.pushDetailSaving(category);
 
   }
 }
