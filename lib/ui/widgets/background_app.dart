@@ -1,14 +1,19 @@
 import 'package:finance_management/common/app_colors.dart';
 import 'package:flutter/material.dart';
 
-
 class BackgroundApp extends StatelessWidget {
   final Widget? header;
   final Widget? body;
   final double heightHeader;
   final AppBar? appBar;
 
-  const BackgroundApp({super.key, this.header, this.body, this.heightHeader = 250, this.appBar});
+  const BackgroundApp({
+    super.key,
+    this.header,
+    this.body,
+    this.heightHeader = 250,
+    this.appBar,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +32,31 @@ class BackgroundApp extends StatelessWidget {
               height: heightHeader,
               width: double.infinity,
               color: AppColors.backgroundColor,
-              child: SafeArea(bottom: false, child: header ?? const Text("Welcome")),
+              child: SafeArea(
+                bottom: false,
+                child: header ?? const Text("Welcome"),
+              ),
             ),
           ),
 
           /// BODY
+          Positioned(
+            top: heightHeader - 0.2 * heightHeader,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: Container(
+              padding: EdgeInsets.all(24),
+              decoration: const BoxDecoration(
+                color: AppColors.lightBackground,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(50),
+                  topRight: Radius.circular(50),
+                ),
+              ),
+              child: SingleChildScrollView(child: body ?? const SizedBox()),
+            ),
+          ),
           Positioned(
             top: heightHeader - 0.2 * heightHeader,
             left: 0,
