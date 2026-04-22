@@ -1,11 +1,16 @@
+import 'package:finance_management/ui/page/analysis/analysis_page.dart';
 import 'package:finance_management/ui/page/auth/forgot_password/forgot_password.page.dart';
 import 'package:finance_management/ui/page/auth/forgot_password/new_password.dart';
 import 'package:finance_management/ui/page/auth/forgot_password/security_pin.dart';
+import 'package:finance_management/ui/page/home/home_page.dart';
 import 'package:finance_management/ui/page/main/main_page.dart';
+import 'package:finance_management/ui/page/profile/profile_page.dart';
 import 'package:finance_management/ui/page/start_app/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../ui/page/analysis/calender/calender_page.dart';
+import '../ui/page/analysis/search/search_page.dart';
 import '../ui/page/auth/sign_in/sign_in_page.dart';
 import '../ui/page/auth/sign_up/sign_up_page.dart';
 import '../ui/page/start_app/onboarding/onboarding_page.dart';
@@ -24,12 +29,14 @@ class AppRouter {
   static final String forgotPassword = "/forgot_password";
   static final String securityPin = "/security_pin";
   static final String newPassword = "/new_password";
+  static final String searchPage = "/search_page";
+  static final String calenderPage = "/calender_page";
+  static final String analysis = "/analysis";
   static final navigationKey = GlobalKey<NavigatorState>();
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
       GoRoute(path: splash, name: splash, builder: (context, state) => SplashPage()),
       GoRoute(path: onboarding, name: onboarding, builder: (context, state) => OnboardingPage()),
-      GoRoute(path: home, name: home, builder: (context, state) => MainPage()),
 
       GoRoute(path: signUp, name: signUp, builder: (context, state) => SignUpPage()),
       GoRoute(path: signIn, name: signIn, builder: (context, state) => SignInPage()),
@@ -39,16 +46,23 @@ class AppRouter {
         name: forgotPassword,
         builder: (context, state) => ForgotPasswordPage(),
       ),
-      GoRoute(
-        path: securityPin,
-        name: securityPin,
-        builder: (context, state) => SecurityPinPage(),
+      GoRoute(path: securityPin, name: securityPin, builder: (context, state) => SecurityPinPage()),
+      GoRoute(path: newPassword, name: newPassword, builder: (context, state) => NewPasswordPage()),
+      GoRoute(path: searchPage, name: searchPage, builder: (context, state) => SearchPage()),
+
+      GoRoute(path: calenderPage, name: calenderPage, builder: (context, state) => CalenderPage()),
+
+
+      ShellRoute(
+        builder: (context, state, child) {
+          return MainPage(child: child);
+        },
+        routes: [
+          GoRoute(path: profile, name: profile, builder: (context, state) => ProfilePage()),
+          GoRoute(path: home, name: home, builder: (context, state) => HomePage()),
+          GoRoute(path: analysis, name: analysis, builder: (context, state) => AnalysisPage()),
+        ],
       ),
-      GoRoute(
-        path: newPassword,
-        name: newPassword,
-        builder: (context, state) => NewPasswordPage(),
-      )
     ],
     initialLocation: splash,
     debugLogDiagnostics: false,

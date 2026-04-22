@@ -2,7 +2,7 @@ import 'package:finance_management/model/profile_entitty/profile_entity.dart';
 import 'package:finance_management/network/profile_client.dart';
 
 abstract class ProfileRepository {
-  final profileClient = ProfileClient();
+
 
   Future<void> updateProfile({required ProfileEntity profile});
 
@@ -12,6 +12,7 @@ abstract class ProfileRepository {
 }
 
 class ProfileRepositoryImpl extends ProfileRepository {
+  final profileClient = ProfileClient();
   @override
   Future<void> addProfile({required ProfileEntity profile}) async {
     await profileClient.addProfile(profile: profile);

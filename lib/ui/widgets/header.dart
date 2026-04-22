@@ -4,10 +4,10 @@ import 'package:finance_management/common/app_text_style.dart';
 import 'package:finance_management/ui/page/home/widget/icon_text.dart';
 import 'package:flutter/material.dart';
 
-class Header extends StatelessWidget {
+class AppHeader extends StatelessWidget {
   final double percent;
 
-  const Header({super.key, this.percent = 0.7});
+  const AppHeader({super.key, this.percent = 0.7});
 
   @override
   Widget build(BuildContext context) {

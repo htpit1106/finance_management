@@ -1,9 +1,8 @@
 import 'package:finance_management/common/app_colors.dart';
 import 'package:finance_management/common/app_icons.dart';
 import 'package:finance_management/common/app_text_style.dart';
-import 'package:finance_management/ui/page/home/widget/filter_button.dart';
 import 'package:finance_management/ui/page/home/widget/list_time_filter.dart';
-import 'package:finance_management/ui/page/home/widget/transaction_item.dart';
+import 'package:finance_management/ui/widgets/transaction_item.dart';
 import 'package:finance_management/ui/widgets/background_app.dart';
 import 'package:finance_management/ui/widgets/header.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +56,7 @@ class _HomePageChildState extends State<HomePageChild> {
             IconButton(onPressed: () {}, icon: SvgPicture.asset(AppIcons.icNotification)),
           ],
         ),
-        Header(),
+        AppHeader(),
       ],
     );
   }

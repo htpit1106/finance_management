@@ -8,25 +8,18 @@ class AppIcons {
   static const icCheckedTrue = "assets/icons/Checked=True.png";
   static const icCheckedFalse = "assets/icons/Checked=False.png";
 
-  static const icCalendar = "assets/icons/icon=calendar.png";
-  static const icClock = "assets/icons/icon=clock.png";
-  static const icButtonBack = "assets/icons/button_back.png";
-  static const icLogout = "assets/icons/logout.png";
-  static const icAvatar = "assets/icons/ic_avatar.png";
 
-  // icNext
   static const icNext1 = "assets/icons/ic_next1.png";
   static const icNext2 = "assets/icons/ic_next2.png";
 
-  // eye open
+
   static const icEyeOpen = "assets/icons/eye_open.svg";
   static const icEyeClose = "assets/icons/eye_close.svg";
 
-  // facebook, google
+
   static const icFacebook = "assets/icons/facebook.svg";
   static const icGoogle = "assets/icons/google.svg";
 
-  // nav bottom icon
 
   static const icHome = "assets/icons/home.svg";
   static const icAnalysis = "assets/icons/analysis.svg";
@@ -36,18 +29,33 @@ class AppIcons {
 
   static const icNotification = "assets/icons/notification.svg";
 
-  // up arrow, down arrow
+
   static const icArrowUp = "assets/icons/up_arrow.svg";
   static const icArrowDown = "assets/icons/down_arrow.svg";
 
-  // tick
   static const icTick = "assets/icons/tick.svg";
-  // car
+
   static const icCar = "assets/icons/car.svg";
-  //salary
+
   static const icSalary = "assets/icons/salary.svg";
 
-  // food
+
   static const icFood = "assets/icons/food.svg";
+
+  static const icCalendar = "assets/icons/calendar.png";
+
+  static const icSearch = "assets/icons/search.png";
+
+  static const icBack = "assets/icons/icBack.svg";
+
+  static const icCheckedPoint = "assets/icons/checked_point.svg";
+  static const icUnCheckedPoint = "assets/icons/uncheck_point.svg";
+
+  static const icArrowDropDown = "assets/icons/arrow_drop_down.svg";
+
+
+
+
+
 
 }
