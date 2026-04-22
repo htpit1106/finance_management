@@ -17,8 +17,16 @@ class AppHeader extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            IconText(text: "Total Balance", fontSize: 11, icPath: AppIcons.icArrowUp),
-            IconText(text: "Total Expense", fontSize: 11, icPath: AppIcons.icArrowDown),
+            IconText(
+              text: "Total Balance",
+              fontSize: 11,
+              icPath: AppIcons.icArrowUp,
+            ),
+            IconText(
+              text: "Total Expense",
+              fontSize: 11,
+              icPath: AppIcons.icArrowDown,
+            ),
           ],
         ),
         Row(
@@ -26,13 +34,18 @@ class AppHeader extends StatelessWidget {
           children: [
             Text("\$7,783.00", style: AppTextStyle.whiteS20),
             Text("-\$1,187.40", style: AppTextStyle.oceanBlueS20Bold),
+            Text("-\$1,187.40", style: AppTextStyle.oceanBlueS20Bold),
           ],
         ),
 
         // process
         _buildProcessBar(percent),
 
-        IconText(text: "30% of your expenses, looks good.", icPath: AppIcons.icTick, fontSize: 15),
+        IconText(
+          text: "30% of your expenses, looks good.",
+          icPath: AppIcons.icTick,
+          fontSize: 15,
+        ),
       ],
     );
   }
@@ -50,7 +63,10 @@ class AppHeader extends StatelessWidget {
             ),
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.only(left: 16),
-            child: Text("${(100 - percent * 100).toInt()}%", style: AppTextStyle.whiteS12Light),
+            child: Text(
+              "${(100 - percent * 100).toInt()}%",
+              style: AppTextStyle.whiteS12Light,
+            ),
           ),
 
           Align(
@@ -65,7 +81,10 @@ class AppHeader extends StatelessWidget {
                 ),
                 alignment: Alignment.centerRight,
                 padding: const EdgeInsets.only(right: 16),
-                child: Text("\$20,000.00", style: AppTextStyle.greenDarkMediumS14),
+                child: Text(
+                  "\$20,000.00",
+                  style: AppTextStyle.greenDarkMediumS14,
+                ),
               ),
             ),
           ),
