@@ -32,7 +32,7 @@ class AppHeader extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text("\$7,783.00", style: AppTextStyle.whiteS20),
+            Text("\$7,783.00", style: AppTextStyle.greenDarkSemiBoldS20),
             Text("-\$1,187.40", style: AppTextStyle.oceanBlueS20Bold),
             Text("-\$1,187.40", style: AppTextStyle.oceanBlueS20Medium),
           ],
