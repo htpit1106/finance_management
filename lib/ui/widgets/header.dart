@@ -34,7 +34,7 @@ class AppHeader extends StatelessWidget {
           children: [
             Text("\$7,783.00", style: AppTextStyle.whiteS20),
             Text("-\$1,187.40", style: AppTextStyle.oceanBlueS20Bold),
-            Text("-\$1,187.40", style: AppTextStyle.whiteS12),
+            Text("-\$1,187.40", style: AppTextStyle.oceanBlueS20Medium),
           ],
         ),
 
